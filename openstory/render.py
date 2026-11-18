@@ -10,6 +10,7 @@ import numpy as np
 
 from .sound import FPS, mix, score, synthesize
 from .story import compose, read_story
+from .stage import film_shot, draw_actors
 
 
 def ffmpeg(args, cwd, capture=False):
@@ -122,11 +123,15 @@ def render(source, destination, model, pace, seed):
         start_frame = cue_index = 0
         for i, (shot, frames) in enumerate(zip(data["shots"], durations)):
             name = shot["board"]
+            staged = bool(data["boards"][name].get("actors"))
             if name not in cache:
                 layers = data["boards"][name].get("layers", [])
                 states = {"always"} | {layer.get("when", "always") for layer in layers}
                 files = {}
                 for state in sorted(states):
+                    if staged:
+                        files[state] = compose(data, name, source.parent, size=(540,960), state=state)
+                        continue
                     board_file = tmp / f"board{len(cache)}-{state}.png"
                     compose(data, name, source.parent, state=state).save(board_file)
                     files[state] = board_file
@@ -134,10 +139,14 @@ def render(source, destination, model, pace, seed):
             end = cue_index + len(shot["lines"])
             (tmp / "shot.ass").write_text(captions(cues[cue_index:end], start_frame / FPS), encoding="utf-8-sig")
             clip = f"shot{i:03}.mp4"
-            inputs = shot_inputs(cache[name], shot, frames, speech, rate, start_frame)
-            ffmpeg([*inputs, "-frames:v", str(frames),
-                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
-                    "-threads", "4", clip], tmp)
+            if staged:
+                plates = (cache[name]["always"], cache[name].get("front"))
+                film_shot(tmp, clip, data, shot, plates, cues[cue_index:end], speech, rate, start_frame, frames)
+            else:
+                inputs = shot_inputs(cache[name], shot, frames, speech, rate, start_frame)
+                ffmpeg([*inputs, "-frames:v", str(frames),
+                        "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
+                        "-threads", "4", clip], tmp)
             segments.append(f"file '{clip}'")
             start_frame += frames
             cue_index = end

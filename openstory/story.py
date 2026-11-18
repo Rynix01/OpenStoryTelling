@@ -8,6 +8,7 @@ from pathlib import Path
 
 import resvg_py
 from PIL import Image, ImageOps
+from .acting import GESTURES, HAIR, PROPS
 
 
 SHAPES = {"g", "path", "rect", "circle", "ellipse", "line", "polyline", "polygon"}
@@ -46,6 +47,11 @@ def validate(data, folder):
     if data["version"] == 2:
         voices = data.get("voices")
         require(isinstance(voices, dict) and voices and all(k in data["cast"] and v in VOICES for k, v in voices.items()), "Her konuşan karakter için geçerli bir ses seç")
+    puppets = data.get("puppets", {})
+    require(isinstance(puppets, dict), "puppets nesne olmalı")
+    for name, p in puppets.items():
+        require(name in data["cast"] and isinstance(p, dict) and p.get("hair") in HAIR, f"Oyuncu çizimi geçersiz: {name}")
+        require(all(isinstance(p.get(k), str) and re.fullmatch(r"#[0-9a-fA-F]{6}", p[k]) for k in ("skin","hair_color","coat","trim","pants")), f"Oyuncu paleti geçersiz: {name}")
     require(isinstance(art, dict) and isinstance(boards, dict), "art ve boards nesne olmalı")
     for name, fragment in art.items():
         require(re.fullmatch(r"[a-zA-Z0-9_-]+", name), "Geçersiz çizim kimliği")
@@ -59,10 +65,17 @@ def validate(data, folder):
             require(re.fullmatch(r"#[a-fA-F0-9]{6}", board.get("color", "")), f"Zemin rengi gerekli: {name}")
         layers = board.get("layers", [])
         require(isinstance(layers, list), f"Katman listesi gerekli: {name}")
-        require("file" in board or layers, f"Plan için bir çizim veya dosya gerekli: {name}")
+        actors = board.get("actors", [])
+        require(isinstance(actors, list) and len(actors) <= 12, f"Plan oyuncuları geçersiz: {name}")
+        require("file" in board or layers or actors, f"Plan için bir çizim veya dosya gerekli: {name}")
+        for a in actors:
+            require(data["version"] == 2 and isinstance(a, dict) and a.get("id") in puppets, f"Plan oyuncusu bulunamadı: {name}")
+            require(a.get("gesture","rest") in GESTURES and a.get("prop","") in PROPS | {""} and a.get("emotion","notr") in TONES, f"Oyuncu hareketi geçersiz: {name}")
+            require(a.get("face","right") in {"left","right"} and bounded(a.get("x"),-4000,4000) and bounded(a.get("y"),-4000,4000) and bounded(a.get("scale"),.05,12), f"Oyuncu konumu geçersiz: {name}")
         for layer in layers:
             require(isinstance(layer, dict) and layer.get("art") in art, f"Bilinmeyen çizim: {name}")
-            require(layer.get("when", "always") in {"always", "speaking", "blink"}, f"Geçersiz hareket: {name}")
+            modes = {"always", "front"} if actors else {"always", "speaking", "blink"}
+            require(layer.get("when", "always") in modes, f"Geçersiz hareket: {name}")
             for field, default, low, high in (("x", 0, -4000, 4000), ("y", 0, -4000, 4000), ("scale", 1, 0.01, 12), ("angle", 0, -360, 360)):
                 require(bounded(layer.get(field, default), low, high), f"Geçersiz konum: {name}/{field}")
     require(isinstance(shots, list) and 1 <= len(shots) <= 200, "1–200 plan gerekli")
@@ -76,6 +89,7 @@ def validate(data, folder):
                 require(isinstance(line, dict) and line.get("speaker") in voices and line.get("emotion") in TONES, f"Plan {i}: konuşmacı ve duygu gerekli")
                 require(bounded(line.get("intensity", 0.85), 0, 1) and bounded(line.get("pause", 0.32), 0, 4) and bounded(line.get("speed", 1), 0.7, 1.35), f"Plan {i}: replik ayarı geçersiz")
                 require(line.get("mode", "dialogue") in ("dialogue", "thought", "recording"), f"Plan {i}: konuşma biçimi")
+                require(line.get("gesture","rest") in GESTURES, f"Plan {i}: el hareketi geçersiz")
                 line = line.get("text")
             require(isinstance(line, str) and 0 < len(line.strip()) <= 220 and len(line.split()) <= 24, f"Plan {i}: her satır 1–24 kelime olmalı")
     return data

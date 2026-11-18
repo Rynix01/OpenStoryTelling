@@ -10,6 +10,7 @@ from openstory.author import brief, generate
 from openstory.render import render
 from openstory.story import compose, read_story
 from openstory.voice import MODEL, install
+from openstory.stage import draw_actors
 
 
 def main():
@@ -72,7 +73,13 @@ def main():
             if not 1 <= args.shot <= len(data["shots"]):
                 raise ValueError("Plan numarası aralık dışında")
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            compose(data, data["shots"][args.shot-1]["board"], args.story.parent).save(args.output)
+            shot = data["shots"][args.shot-1]
+            name = shot["board"]
+            preview = compose(data, name, args.story.parent)
+            if data["boards"][name].get("actors"):
+                front = compose(data, name, args.story.parent, state="front")
+                preview = draw_actors(data, data["boards"][name], preview, front, shot["lines"][0], 0.65, 0.45, 0)
+            preview.save(args.output)
         print(f"{data['title']} · {len(data['shots'])} plan")
 
 
