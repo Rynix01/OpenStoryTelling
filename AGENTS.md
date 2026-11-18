@@ -1,11 +1,9 @@
 # OpenStoryTelling ile bölüm üretimi
 
-Kullanıcı bir hikâye fikri verdiğinde bölümü bu sohbet içinde yaz ve çiz. Proje kökünden çalış. Kullanıcının dilini, süresini ve istediği görsel yönü uygula. Yalnız bir fikir verdiyse varsayılan format Türkçe, 9:16 ve yaklaşık iki buçuk dakikadır.
+Kullanıcı bir fikir verdiğinde hikâyeyi bu sohbet içinde yaz ve tam ekran 9:16 bir bölüm olarak üret. Varsayılan dil Türkçe, hedef süre yaklaşık iki buçuk dakikadır. Örnek proje examples/kiyi-radyo/bolum.json içinde.
 
-1. Devam bölümü için önceki bölümü oku. Karakterlerin kıyafetini ve çizim parçalarını koru. Her yeni karakterin yüzünü, siluetini, aksesuarını ve diğerleriyle ilişkisini belirle.
-2. İlk cümlede merak uyandıran somut bir olay, ortada onu başka türlü okumamızı sağlayan bir ayrıntı ve finalde bir karşılık yaz. Her planın “lines” listesine altyazıda kolay okunacak nefes grupları koy. Tek konuşmacılı sesle diyaloğu anlaşılır kılacak anlatıcı geçişleri kullan.
-3. Yeni bölüm için ayrı klasör ve bolum.json oluştur. Vektör örneği examples/islak-bilet/bolum.json içinde. Gövde, eller, kıyafet, eşya ve mekânı tekrar kullanılan SVG parçalarıyla çiz. Bakış, el hareketi, konuşan ağız ve göz kapağını duyguyla eşleştir. Resimli bir bölüm istenirse yerel çizimleri boards.file ile kullan. Önceki resimli bölümle devam ederken görselleri de incele.
-4. Kurulu Python ile ost.py check ve ost.py preview çalıştır. Yüz, el, nesne ve altyazı alanlarını kontrol et. Yerel model eksikse ost.py voice ile kur. ost.py render ile filmi ve eşlik eden SRT dosyasını üret.
-5. MP4'ün başlangıç, ortası ve sonundan kareleri kontrol et. FFprobe ile ses ve görüntü süresini, dikey çözünürlüğü ve ses kanalını doğrula. Kullanıcıya filmin, düzenlenebilir kaynağın ve gerekiyorsa yeni karakter çizimlerinin yolunu ver.
-
-Aynı sohbette yazarken ikinci bir Codex çağrısı gerekmez. Terminalden tek komut istenirse ost.py make, adım adım kullanım için brief/generate/render vardır. Bu proje için ücretli bir API ekleme.
+1. Yeni bölümler için version 2 kullan. Her konuşmacının yaşına ve rolüne uygun ayrı bir Türkçe ses seç. Replikte speaker, emotion ve text ver. Heyecan, merak, özür ve üzüntünün ses şiddeti ve duraklamasına sahneye göre karar ver. Devam bölümünde önceki ses ve çizim kimliklerini koru.
+2. Karakterleri ilk cümleden itibaren sahnede oynat. Dekoru kenardan kenara doldur. İç sesi thought, banttan gelen sahne dışı sesi recording olarak işaretle. Hatırayı oyuncuların içinde yaşadığı bir sahneye keserek göster. Diyalogda bakış, kaş, ağız ve el hareketini, ayrıca dinleyicinin tepkisini yönet.
+3. Her yeni bölüm için ayrı klasör oluştur. Kodla çizilen aktörleri puppets ve boards.actors ile kur. Tutulan küçük eşyayı ele bağla. Gerekirse dekoru SVG veya yerel WebP olarak ekle. Bölümün içine albüm sayfası, yazılı hatıra kartı veya dekoratif başlık şeridi koyma.
+4. ost.py check ve ost.py preview ile sahneyi kontrol et. ost.py voice ücretsiz Türkçe Seslen modelini kurar. ost.py render ile MP4, altyazı ve seslendirme dökümünü üret. Sohbet içindeki üretim için ikinci bir Codex oturumu gerekmez.
+5. Teslimden önce birden fazla rolün karşılıklı konuştuğu anı ve sessiz tepkiyi kontrol et. FFprobe ile görüntü ve ses süresini doğrula. Kullanıcıya izlenebilir filmi ve gerektiğinde kısa karşılaştırma örneğini ver. Seslerin yapay zekâyla üretildiğini belirt.

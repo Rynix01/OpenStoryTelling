@@ -1,6 +1,5 @@
 """Draw articulated cel actors. The actor origin is the centre of the face."""
-from math import cos, exp, pi, sin
-from xml.sax.saxutils import escape
+from math import exp, pi, sin
 
 INK = "#382e32"
 HAIR = {"bob", "wave", "silver", "crop", "braid"}
@@ -54,7 +53,7 @@ def face(p, mood, mouth, blink, glance):
     bright = mood in ("neseli","heyecan","merak")
     angry = mood in ("kizgin","uyari")
     for x, wide in [(-14,12.5),(34,9.2)]:
-        slope = (3.8 if worried else -4 if angry else 0) * (-1 if x < 0 else 1)
+        slope = (4.4 if worried else -4.4 if angry else 0) * (1 if x < 0 else -1)
         by = -9 - (3 if bright else 0)
         head.append(path(f"M{x-wide:.1f} {by+slope:.1f} Q{x} {by-5:.1f} {x+wide:.1f} {by-slope:.1f}","none",hair,3.8 if senior else 3))
         h = 5.2 if worried else 8.2 if bright or child else 6.3
@@ -63,14 +62,15 @@ def face(p, mood, mouth, blink, glance):
         else:
             head.append(path(f"M{x-wide:.1f} 8 Q{x-1} {4-h:.1f} {x+wide:.1f} 6 Q{x} {9+h:.1f} {x-wide:.1f} 8Z","#fff3dc",INK,1.7))
             pupil = x+2.4+glance
-            head.extend([oval(pupil,7.5,3.8,4.2,"#533f33"),oval(pupil+.5,7.5,2.1,3,INK),oval(pupil+1,6,1.1,1.1,"#fff7db")])
+            py = 9.2 if worried else 7.2
+            head.extend([oval(pupil,py,3.8,4.2,"#533f33"),oval(pupil+.5,py,2.1,3,INK),oval(pupil+1,py-1.5,1.1,1.1,"#fff7db")])
     if mouth > .10:
         h = 3 + 12 * mouth
         w = 6 + 5 * (1-mouth) + (2 if bright else 0)
         head.extend([path(f"M{15-w:.1f} 38 Q13 34 {16+w:.1f} 36 Q19 {42+h:.1f} 12 {39+h:.1f} Q7 {38+h:.1f} {15-w:.1f} 38Z","#593038"),
                      oval(14,39+h*.55,w*.40,max(1,h*.18),"#c07c74")])
     else:
-        bend = 45 if bright else 32 if worried else 39
+        bend = 45 if mood in ("neseli","heyecan") else 32 if worried else 39
         head.append(path(f"M4 39 Q14 {bend} 26 36","none",INK,2))
     if senior:
         head.extend([path("M0 30 Q8 23 16 28 Q23 23 34 29 L39 33 Q28 36 15 32 Q5 37-4 35Z",hair),
@@ -98,7 +98,7 @@ def prop(name):
     return ""
 
 
-def arm(root, elbow, hand, skin, cloth, cuff, item=""):
+def arm(root, elbow, hand, skin, cloth, cuff, item="", gesture="rest"):
     sx, sy = root
     ex, ey = elbow
     hx, hy = hand
@@ -107,11 +107,18 @@ def arm(root, elbow, hand, skin, cloth, cuff, item=""):
     length = max(1, (dx*dx+dy*dy)**.5)
     nx, ny = -dy/length, dx/length
     skeleton = f"M{sx:.1f} {sy:.1f} Q{ex:.1f} {ey:.1f} {ex:.1f} {ey:.1f} L{hx:.1f} {hy:.1f}"
+    palm = oval(0,0,9,10,skin,INK,1.8)
+    fingers = path("M-4-2 Q0-8 5-7 Q9-5 6-2 L2 1",skin,INK,1.3)
+    if not item and gesture in ("point","press"):
+        palm = path("M-8 5 Q-12-4-5-9 Q-2-12 4-9 L18-18 Q24-19 20-13 L9-2 Q15 5 8 10 Q1 14-8 5Z",skin)
+        fingers = path("M1 1 L7-4 M4 4 L10 0","none","#a16f5a",1.2)
+    elif not item and gesture in ("offer","wave","reach"):
+        palm = path("M-10 3 Q-13-4-11-11 Q-9-15-7-10 L-4-5 L0-14 Q2-17 4-13 L3-8 L8-14 Q12-15 11-11 L8-5 L14-10 Q19-10 16-6 L9 3 Q2 13-6 11Z",skin)
+        fingers = path("M-5 3 Q0-2 6-2","none","#ac7962",1.2)
     return (path(skeleton,"none",INK,24)+path(skeleton,"none",cloth,20)
             +path(f"M{hx+8*nx:.1f} {hy+8*ny:.1f} l{-16*nx:.1f} {-16*ny:.1f}","none",cuff,3)
             +group(f"translate({hx+4*dx/length:.1f} {hy+4*dy/length:.1f})",
-                   oval(0,0,9,10,skin,INK,1.8), group("translate(5 -7) rotate(-12)",prop(item)),
-                   path("M-4-2 Q0-8 5-7 Q9-5 6-2 L2 1",skin,INK,1.3)))
+                   palm, group("translate(5 -7) rotate(-12)",prop(item)), fingers))
 
 
 HANDS = {"rest":(56,203), "offer":(103,127), "reach":(102,101), "heart":(8,110),
@@ -125,12 +132,12 @@ def actor_svg(p, actor, t, phase, emotion, speaking, mouth, progress):
     pose = actor.get("gesture","rest")
     move = smooth(progress * 4) * (1 - .22 * smooth((progress-.81)*5))
     # Prepare, lift, settle. A listener reacts a little later than the speaker.
-    lead = .48 + .52 * move
+    lead = .20 + .80 * move
     breath = sin(t*2.1+phase)
     nod = sin(t*4.4+phase)*1.4 if speaking else sin(t*1.35+phase)*.7
     lean = {"reach":-3, "press":-3, "recoil":5, "listen":2, "wipe":3}.get(pose,-1.2)
     tilt = {"merak":-6, "uzgun":7, "ozur":6, "heyecan":-4, "kizgin":3, "fisilti":5}.get(emotion,-1)
-    glance = sin(phase+t*.9)*.7 - (3.2 if emotion in ("uzgun","ozur") else 0)
+    glance = sin(phase+t*.9)*.7 - (3.8*move if emotion in ("uzgun","ozur") else 0)
     blink = ((t+phase*.71)%3.63 < .115) or (pose=="wipe" and .32<progress<.47)
     child = p.get("child",False)
     skin, cloth, cuff = p["skin"],p["coat"],p["trim"]
@@ -156,11 +163,12 @@ def actor_svg(p, actor, t, phase, emotion, speaking, mouth, progress):
     if pose=="wave":
         hx += 11*sin(progress*5*pi)
     elbow = (max(51,hx*.68+17), 146+(hy-130)*.35)
-    left = arm((-35,98),(-52,146),(-43+3*breath,199),skin,cloth,cuff)
-    right = arm((34,98),elbow,(hx,hy),skin,cloth,cuff,actor.get("prop",""))
+    counter = move * (1 if pose in ("offer","recoil","wave") else .24)
+    left = arm((-35,98),(-52-8*counter,146),(-43+3*breath-16*counter,199-35*counter),skin,cloth,cuff)
+    right = arm((34,98),elbow,(hx,hy),skin,cloth,cuff,actor.get("prop",""),pose)
     head_scale = 1.16 if child else 1.
     head = group(f"translate({nod:.1f} {breath*1.6:.1f}) rotate({tilt*lead+nod:.2f} 0 56) scale({head_scale})",
                  face(p,emotion,mouth if speaking else 0,blink,glance))
-    upper = group(f"rotate({lean*lead+breath*.6:.2f} 0 215) translate(0 {breath*.85:.2f})",
+    upper = group(f"rotate({lean*lead+breath*.6:.2f} 0 215) translate({nod*.6:.2f} {breath*.85:.2f})",
                   left,*costume,head,right)
     return group(f"translate({x} {y}) scale({s*flip} {s})",legs,feet,upper)
