@@ -1,0 +1,271 @@
+{
+  "engine": "Seslen TTS",
+  "lines": [
+    {
+      "start": 0.0,
+      "end": 2.85,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Ece, dur! O kaseti sakın geri sarma.",
+      "emotion": "uyari",
+      "gesture": "reach",
+      "pause": 0.44
+    },
+    {
+      "start": 3.3,
+      "end": 7.284,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Baba, üstünde benim adım var. Neden dinlemeyeyim?",
+      "emotion": "merak",
+      "gesture": "offer"
+    },
+    {
+      "start": 7.633,
+      "end": 12.008,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Bir ucunu ben bantladım. Koparsa bir daha bağlayamam.",
+      "emotion": "uzgun",
+      "gesture": "heart",
+      "pause": 0.56
+    },
+    {
+      "start": 12.6,
+      "end": 16.464,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Şu köşesine bak. Bu benim doğduğum yıl bile değil.",
+      "emotion": "merak",
+      "gesture": "point"
+    },
+    {
+      "start": 16.8,
+      "end": 19.554,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "O etiketi yıllar sonra yazdım kızım.",
+      "emotion": "ozur",
+      "gesture": "heart"
+    },
+    {
+      "start": 19.9,
+      "end": 23.743,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Peki, bir kez dinlesek? Elim düğmenin üstünde durur.",
+      "emotion": "fisilti",
+      "gesture": "offer",
+      "pause": 0.56
+    },
+    {
+      "start": 24.333,
+      "end": 26.927,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Pekâlâ. Sadece biraz kıs sesini.",
+      "emotion": "fisilti",
+      "gesture": "press",
+      "pause": 0.72
+    },
+    {
+      "start": 27.667,
+      "end": 30.941,
+      "voice": "can",
+      "speaker": "KucukSelim",
+      "text": "Anne, şimdi konuşursam bütün mahalle duyar mı?",
+      "emotion": "merak",
+      "gesture": "heart"
+    },
+    {
+      "start": 31.267,
+      "end": 34.555,
+      "voice": "ayse",
+      "speaker": "Nermin",
+      "text": "Keşke duysa! Şimdilik bir tek ben varım dinleyen.",
+      "emotion": "neseli",
+      "gesture": "offer"
+    },
+    {
+      "start": 34.9,
+      "end": 38.844,
+      "voice": "can",
+      "speaker": "KucukSelim",
+      "text": "Ya yine takılırsam? Dün adımı bile söyleyemedim.",
+      "emotion": "fisilti",
+      "gesture": "recoil",
+      "pause": 0.5
+    },
+    {
+      "start": 39.367,
+      "end": 43.991,
+      "voice": "ayse",
+      "speaker": "Nermin",
+      "text": "O zaman ben beklerim. Bizim radyomuzun hiç acelesi yok.",
+      "emotion": "fisilti",
+      "gesture": "heart",
+      "pause": 0.66
+    },
+    {
+      "start": 44.667,
+      "end": 49.027,
+      "voice": "ayse",
+      "speaker": "Nermin",
+      "text": "Sen şu kırmızı düğmeye bas. Ben de gözlerimi kapatayım.",
+      "emotion": "neseli",
+      "gesture": "press"
+    },
+    {
+      "start": 49.367,
+      "end": 51.842,
+      "voice": "can",
+      "speaker": "KucukSelim",
+      "text": "İyi akşamlar. Burası Kıyı Radyo.",
+      "emotion": "merak",
+      "gesture": "heart",
+      "pause": 0.46
+    },
+    {
+      "start": 52.333,
+      "end": 56.358,
+      "voice": "can",
+      "speaker": "KucukSelim",
+      "text": "Bugünkü ilk şarkı, mutfaktan bizi dinleyen anneme gidiyor!",
+      "emotion": "heyecan",
+      "gesture": "wave",
+      "pause": 0.55
+    },
+    {
+      "start": 56.933,
+      "end": 60.968,
+      "voice": "ayse",
+      "speaker": "Nermin",
+      "text": "Duydum seni Selim! Bak, mutfaktan alkış da geliyor!",
+      "emotion": "heyecan",
+      "gesture": "clap"
+    },
+    {
+      "start": 61.3,
+      "end": 63.8,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Konuşan çocuk... Baba, o sen misin?",
+      "emotion": "merak",
+      "gesture": "point",
+      "pause": 0.41
+    },
+    {
+      "start": 64.233,
+      "end": 69.398,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Annem mutfağa hiç gitmemişti. Yanımda, şu taburede oturuyordu.",
+      "emotion": "uzgun",
+      "gesture": "wipe",
+      "pause": 0.68
+    },
+    {
+      "start": 70.1,
+      "end": 73.875,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Kendimi gerçekten radyodaymışım gibi hissedeyim istemiş.",
+      "emotion": "uzgun",
+      "gesture": "heart"
+    },
+    {
+      "start": 74.2,
+      "end": 77.9,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "İstersen burada duralım baba. Kapatayım mı?",
+      "emotion": "ozur",
+      "gesture": "offer",
+      "pause": 0.53
+    },
+    {
+      "start": 78.433,
+      "end": 81.942,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Hayır, biraz daha kalsın. Gülüşünü unutmuşum.",
+      "emotion": "fisilti",
+      "gesture": "listen",
+      "pause": 0.78
+    },
+    {
+      "start": 82.733,
+      "end": 85.651,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Peki öbür yüzüne niye benim adımı yazdın?",
+      "emotion": "merak",
+      "gesture": "reach"
+    },
+    {
+      "start": 86.0,
+      "end": 90.302,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Senin ilk gecendi. Hastanede ikimiz de uyuyamamıştık.",
+      "emotion": "neseli",
+      "gesture": "heart"
+    },
+    {
+      "start": 90.633,
+      "end": 95.178,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Annem bana cesaret vermişti. Ben de sana bir yayın yaptım.",
+      "emotion": "neseli",
+      "gesture": "offer"
+    },
+    {
+      "start": 95.5,
+      "end": 98.05,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Ne söyledin bana, hatırlıyor musun?",
+      "emotion": "merak",
+      "gesture": "listen"
+    },
+    {
+      "start": 98.4,
+      "end": 103.275,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "İyi akşamlar Ece. Radyomuzun artık iki dinleyicisi var.",
+      "emotion": "fisilti",
+      "gesture": "heart",
+      "pause": 0.8
+    },
+    {
+      "start": 104.1,
+      "end": 107.642,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "Yarın bu dükkânı kapatsak da radyoyu açık tutabiliriz.",
+      "emotion": "neseli",
+      "gesture": "reach"
+    },
+    {
+      "start": 107.967,
+      "end": 111.267,
+      "voice": "serdar",
+      "speaker": "Selim",
+      "text": "Öyle mi? Peki ilk programı kim sunacak?",
+      "emotion": "merak",
+      "gesture": "offer"
+    },
+    {
+      "start": 111.6,
+      "end": 115.739,
+      "voice": "nehir",
+      "speaker": "Ece",
+      "text": "İyi akşamlar baba. Bugünkü ilk şarkı sana gidiyor.",
+      "emotion": "heyecan",
+      "gesture": "heart",
+      "pause": 1.05
+    }
+  ]
+}

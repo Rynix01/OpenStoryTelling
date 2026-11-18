@@ -1,199 +1,111 @@
 ﻿1
-00:00:00,000 --> 00:00:03,722
-Babam, annesinin sesini duyar duymaz teybin fişini çekti.
+00:00:00,000 --> 00:00:02,850
+Ece, dur! O kaseti sakın geri sarma.
 
 2
-00:00:03,967 --> 00:00:05,244
-Ses kesilmedi.
+00:00:03,300 --> 00:00:07,284
+Baba, üstünde benim adım var. Neden dinlemeyeyim?
 
 3
-00:00:05,374 --> 00:00:07,003
-Teyp pille çalışıyordu.
+00:00:07,633 --> 00:00:12,008
+Bir ucunu ben bantladım. Koparsa bir daha bağlayamam.
 
 4
-00:00:07,233 --> 00:00:10,695
-O akşam dükkâna sadece kepengi indirmeye uğramıştım.
+00:00:12,600 --> 00:00:16,464
+Şu köşesine bak. Bu benim doğduğum yıl bile değil.
 
 5
-00:00:10,933 --> 00:00:13,755
-Babam yarın anahtarı yeni kiracıya verecekti.
+00:00:16,800 --> 00:00:19,554
+O etiketi yıllar sonra yazdım kızım.
 
 6
-00:00:13,885 --> 00:00:16,834
-Kırk yıldır ilk kez tezgâhın üstü görünüyordu.
+00:00:19,900 --> 00:00:23,743
+Peki, bir kez dinlesek? Elim düğmenin üstünde durur.
 
 7
-00:00:17,067 --> 00:00:20,484
-En alttaki çekmeceden küçük, sarı bir kaset çıktı.
+00:00:24,333 --> 00:00:26,927
+Pekâlâ. Sadece biraz kıs sesini.
 
 8
-00:00:20,733 --> 00:00:22,636
-Üzerinde benim adım vardı.
+00:00:27,667 --> 00:00:30,940
+Anne, şimdi konuşursam bütün mahalle duyar mı?
 
 9
-00:00:22,766 --> 00:00:26,428
-Altındaki tarihse ben doğmadan on iki yıl öncesiydi.
+00:00:31,267 --> 00:00:34,555
+Keşke duysa! Şimdilik bir tek ben varım dinleyen.
 
 10
-00:00:26,667 --> 00:00:29,906
-Baba, dedim. Bizim ailede başka Ece mi var?
+00:00:34,900 --> 00:00:38,844
+Ya yine takılırsam? Dün adımı bile söyleyemedim.
 
 11
-00:00:30,133 --> 00:00:33,727
-Elindeki bezi katladı. Sonra açıp yeniden katladı.
+00:00:39,367 --> 00:00:43,991
+O zaman ben beklerim. Bizim radyomuzun hiç acelesi yok.
 
 12
-00:00:33,967 --> 00:00:36,117
-Cevap vermeyince kaseti taktım.
+00:00:44,667 --> 00:00:49,027
+Sen şu kırmızı düğmeye bas. Ben de gözlerimi kapatayım.
 
 13
-00:00:36,246 --> 00:00:38,191
-Önce bir sandalye gıcırdadı.
-
-14
-00:00:38,433 --> 00:00:40,082
-Sonra bir kadın güldü.
-
-15
-00:00:40,212 --> 00:00:44,086
-Selim, o kırmızı düğmeye basmadan kayıt nasıl başlasın oğlum?
-
-16
-00:00:44,333 --> 00:00:47,186
-Babamın fişi çektiği yer işte tam burasıydı.
-
-17
-00:00:47,433 --> 00:00:48,722
-Kapatayım mı, dedim.
-
-18
-00:00:48,852 --> 00:00:50,977
-Bu defa başını iki yana salladı.
-
-19
-00:00:51,200 --> 00:00:54,701
-Tezgâhın camı altında yıllardır aynı fotoğraf dururdu.
-
-20
-00:00:54,933 --> 00:00:57,870
-Kulaklığı takan çocuğun babam olduğunu biliyordum.
-
-21
-00:00:58,000 --> 00:01:01,710
-Fotoğraftaki kadının nasıl güldüğünüyse ilk kez duyuyordum.
-
-22
-00:01:01,933 --> 00:01:04,638
-Peki, benim adım o kasette ne arıyordu?
-
-23
-00:01:04,867 --> 00:01:08,890
-Baban on dört yaşındayken iki kelimeyi zor birleştirirdi, dedi.
-
-24
-00:01:09,133 --> 00:01:13,210
-Dükkâna müşteri girince annem beni tezgâhın altından çıkaramazdı.
-
-25
-00:01:13,433 --> 00:01:16,494
-Bir akşam önüne bozuk bir mikrofon koymuş.
-
-26
-00:01:16,624 --> 00:01:19,096
-Bunu onar, beraber radyo kuralım, demiş.
-
-27
-00:01:19,333 --> 00:01:22,702
-Annem ne isterse kendi programında söyleyebilecekti.
-
-28
-00:01:22,832 --> 00:01:25,487
-Ben de takılınca yayını başa sarabilecektim.
-
-29
-00:01:25,733 --> 00:01:28,798
-Bantta iki kere öksüren ince bir ses duyuldu.
-
-30
-00:01:29,033 --> 00:01:31,576
+00:00:49,367 --> 00:00:51,842
 İyi akşamlar. Burası Kıyı Radyo.
 
-31
-00:01:31,706 --> 00:01:35,680
-İlk şarkımız bizi mutfaktan dinleyen tek dinleyicimize gidiyor.
+14
+00:00:52,333 --> 00:00:56,358
+Bugünkü ilk şarkı, mutfaktan bizi dinleyen anneme gidiyor!
 
-32
-00:01:35,933 --> 00:01:38,785
-Babam eski sesini tanıyınca birden utandı.
+15
+00:00:56,933 --> 00:01:00,968
+Duydum seni Selim! Bak, mutfaktan alkış da geliyor!
 
-33
-00:01:38,915 --> 00:01:42,335
-Sonraki kelimeyi ondan önce, şimdiki sesiyle fısıldadı.
+16
+00:01:01,300 --> 00:01:03,800
+Konuşan çocuk... Baba, o sen misin?
 
-34
-00:01:42,567 --> 00:01:43,298
-Anneme.
+17
+00:01:04,233 --> 00:01:09,398
+Annem mutfağa hiç gitmemişti. Yanımda, şu taburede oturuyordu.
 
-35
-00:01:43,533 --> 00:01:45,949
-Elini tuttum. Bu kez geri çekmedi.
+18
+00:01:10,100 --> 00:01:13,875
+Kendimi gerçekten radyodaymışım gibi hissedeyim istemiş.
 
-36
-00:01:46,200 --> 00:01:47,916
-Ama hâlâ anlamamıştım.
+19
+00:01:14,200 --> 00:01:17,900
+İstersen burada duralım baba. Kapatayım mı?
 
-37
-00:01:48,045 --> 00:01:50,313
-Kasete benim adımı kim yazmıştı?
+20
+00:01:18,433 --> 00:01:21,942
+Hayır, biraz daha kalsın. Gülüşünü unutmuşum.
 
-38
-00:01:50,533 --> 00:01:54,550
-Babam kaseti çevirdi. Öteki yüzde yepyeni bir etiket vardı.
+21
+00:01:22,733 --> 00:01:25,651
+Peki öbür yüzüne niye benim adımı yazdın?
 
-39
-00:01:54,800 --> 00:01:56,913
-Sen doğduğun gece yazdım, dedi.
+22
+00:01:26,000 --> 00:01:30,302
+Senin ilk gecendi. Hastanede ikimiz de uyuyamamıştık.
 
-40
-00:01:57,043 --> 00:02:00,388
-Bir gün babaannem nasıl biriydi diye sorarsın sandım.
+23
+00:01:30,633 --> 00:01:35,178
+Annem bana cesaret vermişti. Ben de sana bir yayın yaptım.
 
-41
-00:02:00,633 --> 00:02:02,390
-Peki niye hiç dinletmedin?
+24
+00:01:35,500 --> 00:01:38,050
+Ne söyledin bana, hatırlıyor musun?
 
-42
-00:02:02,520 --> 00:02:06,182
-Babam başparmağıyla etiketin kalkmış köşesini düzeltti.
-
-43
-00:02:06,433 --> 00:02:10,506
-Ya bant koparsa diye korktum. Sesinden bir tane daha yok ki.
-
-44
-00:02:10,733 --> 00:02:13,954
-B yüzünü açtık. Bu kez bebek ağlaması geldi.
-
-45
-00:02:14,200 --> 00:02:16,573
-Arkasından genç bir baba fısıldadı.
-
-46
-00:02:16,703 --> 00:02:20,650
+25
+00:01:38,400 --> 00:01:43,275
 İyi akşamlar Ece. Radyomuzun artık iki dinleyicisi var.
 
-47
-00:02:20,900 --> 00:02:25,340
-Yarın anahtarı verecektik. Eve sığacak tek bir eşya seçebilirdim.
+26
+00:01:44,100 --> 00:01:47,642
+Yarın bu dükkânı kapatsak da radyoyu açık tutabiliriz.
 
-48
-00:02:25,567 --> 00:02:29,572
-Teybi çantama koydum. Kapıdan çıkarken babam koluma dokundu.
+27
+00:01:47,967 --> 00:01:51,267
+Öyle mi? Peki ilk programı kim sunacak?
 
-49
-00:02:29,800 --> 00:02:31,507
-Mikrofonu da al, dedi.
-
-50
-00:02:31,733 --> 00:02:33,800
-Daha senin sesini kaydetmedik.
+28
+00:01:51,600 --> 00:01:55,739
+İyi akşamlar baba. Bugünkü ilk şarkı sana gidiyor.

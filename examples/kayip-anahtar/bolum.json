@@ -59,9 +59,9 @@
       "actors": [
         {
           "id": "Duru",
-          "x": 215,
-          "y": 640,
-          "scale": 1.4,
+          "x": 240,
+          "y": 725,
+          "scale": 1.06,
           "face": "right",
           "gesture": "offer",
           "emotion": "neseli",
@@ -69,9 +69,9 @@
         },
         {
           "id": "Murat",
-          "x": 505,
-          "y": 600,
-          "scale": 1.4,
+          "x": 492,
+          "y": 591,
+          "scale": 1.42,
           "face": "left",
           "gesture": "listen",
           "emotion": "merak"
@@ -92,18 +92,18 @@
       "actors": [
         {
           "id": "Duru",
-          "x": 215,
-          "y": 640,
-          "scale": 1.4,
+          "x": 133,
+          "y": 677,
+          "scale": 1.66,
           "face": "right",
           "gesture": "wave",
           "emotion": "neseli"
         },
         {
           "id": "Murat",
-          "x": 505,
-          "y": 600,
-          "scale": 1.4,
+          "x": 546,
+          "y": 478,
+          "scale": 2.2,
           "face": "left",
           "gesture": "reach",
           "emotion": "heyecan",

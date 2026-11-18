@@ -4,6 +4,8 @@ Codex Türkçe hikâyeyi yazar, karakterleri çizer ve oynatır. Yerel derleyici
 
 **[Sarı Kaset'i izle](examples/kiyi-radyo/video/film.mp4)** · [Senaryo ve oyuncular](examples/kiyi-radyo/bolum.json) · [Dekorlar](examples/kiyi-radyo/gorseller.md) · [Dört referansın incelemesi](docs/referans-incelemesi.md)
 
+[Dört sesi aynı sahne dizisinde dinle](examples/kiyi-radyo/video/kisa-sahne.mp4) · [Kayıp Anahtar, kız çocuk ve baba diyaloğu](examples/kayip-anahtar/video/film.mp4)
+
 Sarı Kaset'te yetişkin Ece ve Selim'i Nehir ve Serdar, kasetteki dokuz yaşındaki Selim'i Can, annesi Nermin'i Ayşe seslendirir. Sesler yapay zekâ ile üretilmiştir. 28 planda el-kol hareketleri, göz-kaş tepkileri, baş eğimi ve konuşma sırasında ağız açıklığı zaman içinde değişir. İki kişilik planlarda dinleyen karakterin kendi tepkisi vardır.
 
 ## Codex sohbetinde
@@ -50,7 +52,7 @@ Linux ve macOS'ta sanal ortam için `python3 -m venv .venv`, komutlar için `.ve
 | `voices` | Karakter → ses. Örneğin kız çocuk için `elif`, erkek çocuk için `can`, yetişkin kadın için `nehir` veya `ayse`, yetişkin erkek için `serdar` veya `ege`. |
 | `emotion` | `merak`, `heyecan`, `uzgun`, `ozur`, `fisilti`, `uyari`, `kizgin`, `neseli` ve `notr`. `intensity` duygu şiddetini, `speed` replik hızını ayarlar. |
 | `mode` | `dialogue` konuşanı oynatır. `thought` ve `recording` sahnedeki ağızları sessiz tutar. |
-| `puppets`, `boards.actors` | Saç, ten, giysi ve yaşla karakteri oluştur. Yüz merkezini x/y ile, yönü face ile, davranışı gesture ve emotion ile belirle. Elde tutulan kaset, mikrofon ve kablo bileği izler. |
+| `puppets`, `boards.actors` | Saç, ten, giysi ve yaşla karakteri oluştur. `role` ile ses eşleşmesini denetle. Yüz merkezini x/y ile, yönü face ile, davranışı gesture ve emotion ile belirle. Elde tutulan kaset, mikrofon ve kablo bileği izler. Özel çizimi ele bağlamak için `propArt` kullan. |
 | `art`, `layers` | SVG dekoru ve aksesuarlar. `when: front` masa gibi parçaları karakterin önüne getirir. Yerel PNG, JPEG ve WebP sahne zemini olarak kullanılabilir. |
 
 Konuşma zamanları sentezlenen sesin gerçek süresinden alınır. Oyuncular saniyede 15 ayrı pozla çizilir. FFmpeg bunları 720×1280, 30 fps H.264 ve 48 kHz stereo AAC olarak birleştirir. Ağız açıklığı sesteki enerjiye dayanır. Jestler senaryoda seçilen eklem hareketleridir.
