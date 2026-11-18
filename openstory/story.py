@@ -11,6 +11,9 @@ from PIL import Image, ImageOps
 
 
 SHAPES = {"g", "path", "rect", "circle", "ellipse", "line", "polyline", "polygon"}
+TONES = {"notr", "neseli", "heyecan", "uyari", "merak", "ozur", "uzgun", "kizgin", "fisilti"}
+VOICES = {"nehir", "ege", "ayse", "serdar", "zeynep", "emre", "selin", "fatma",
+          "hasan", "elif", "can", "ece", "pitircik", "koca", "firfir", "kara"}
 ATTRIBUTES = set("""transform d fill stroke stroke-width stroke-linejoin stroke-linecap
     fill-rule opacity fill-opacity stroke-opacity points x y width height x1 x2 y1 y2
     cx cy rx ry r stroke-dasharray""".split())
@@ -35,11 +38,14 @@ def validate_svg(fragment):
 
 
 def validate(data, folder):
-    require(isinstance(data, dict) and data.get("version") == 1, "version alanı 1 olmalı")
+    require(isinstance(data, dict) and data.get("version") in (1, 2), "version alanı 1 veya 2 olmalı")
     for field in ("title", "continuity"):
         require(isinstance(data.get(field), str) and data[field].strip(), f"Eksik alan: {field}")
     require(isinstance(data.get("cast"), dict) and all(isinstance(v, str) for v in data["cast"].values()), "cast nesne olmalı")
     art, boards, shots = (data.get(k) for k in ("art", "boards", "shots"))
+    if data["version"] == 2:
+        voices = data.get("voices")
+        require(isinstance(voices, dict) and voices and all(k in data["cast"] and v in VOICES for k, v in voices.items()), "Her konuşan karakter için geçerli bir ses seç")
     require(isinstance(art, dict) and isinstance(boards, dict), "art ve boards nesne olmalı")
     for name, fragment in art.items():
         require(re.fullmatch(r"[a-zA-Z0-9_-]+", name), "Geçersiz çizim kimliği")
@@ -64,7 +70,14 @@ def validate(data, folder):
         require(isinstance(shot, dict) and shot.get("board") in boards, f"Plan {i}: çizim bulunamadı")
         require(shot.get("camera", "push") in ("push", "pull", "hold"), f"Plan {i}: kamera")
         lines = shot.get("lines")
-        require(isinstance(lines, list) and 1 <= len(lines) <= 20 and all(isinstance(s, str) and 0 < len(s.strip()) <= 220 and len(s.split()) <= 24 for s in lines), f"Plan {i}: her satır 1–24 kelime olmalı")
+        require(isinstance(lines, list) and 1 <= len(lines) <= 20, f"Plan {i}: replik listesi gerekli")
+        for line in lines:
+            if data["version"] == 2:
+                require(isinstance(line, dict) and line.get("speaker") in voices and line.get("emotion") in TONES, f"Plan {i}: konuşmacı ve duygu gerekli")
+                require(bounded(line.get("intensity", 0.85), 0, 1) and bounded(line.get("pause", 0.32), 0, 4) and bounded(line.get("speed", 1), 0.7, 1.35), f"Plan {i}: replik ayarı geçersiz")
+                require(line.get("mode", "dialogue") in ("dialogue", "thought", "recording"), f"Plan {i}: konuşma biçimi")
+                line = line.get("text")
+            require(isinstance(line, str) and 0 < len(line.strip()) <= 220 and len(line.split()) <= 24, f"Plan {i}: her satır 1–24 kelime olmalı")
     return data
 
 

@@ -110,6 +110,12 @@ def render(source, destination, model, pace, seed):
         result.mkdir()
         print("Türkçe anlatım hazırlanıyor…", flush=True)
         rate, speech, cues, durations = synthesize(data, model, pace)
+        if data["version"] == 2:
+            script = [line for shot in data["shots"] for line in shot["lines"]]
+            takes = [dict(start=round(a, 3), end=round(b, 3), voice=data["voices"][line["speaker"]], **line)
+                     for (a, b, _), line in zip(cues, script)]
+            (result / "seslendirme.json").write_text(json.dumps({"engine": "Seslen TTS", "lines": takes},
+                                                    ensure_ascii=False, indent=2), encoding="utf-8")
         music = score(len(speech), rate, seed or data["title"])
         mix(tmp / "mix.wav", rate, speech, music, cues)
         segments, cache = [], {}
@@ -141,7 +147,8 @@ def render(source, destination, model, pace, seed):
         ffmpeg(["-f", "concat", "-safe", "1", "-i", "clips.txt", "-i", "mix.wav",
                 "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-af", gain, "-ar", "48000",
                 "-c:a", "aac", "-b:a", "160k", "-t", f"{start_frame/FPS:.9f}", "-movflags", "+faststart",
-                "-metadata", f"title={data['title']}", "result/film.mp4"], tmp)
+                "-metadata", f"title={data['title']}", "-metadata", "comment=Yapay zekâ ile Türkçe seslendirme",
+                "result/film.mp4"], tmp)
         srt = "\n\n".join(f"{i}\n{stamp(a,True)} --> {stamp(b,True)}\n{line}"
                           for i, (a, b, line) in enumerate(cues, 1))
         (result / "altyazi.srt").write_text(srt + "\n", encoding="utf-8-sig")

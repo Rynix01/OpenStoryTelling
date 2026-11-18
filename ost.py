@@ -15,7 +15,8 @@ from openstory.voice import MODEL, install
 def main():
     cli = argparse.ArgumentParser(description="OpenStoryTelling · Türkçe çizgi hikâye atölyesi")
     sub = cli.add_subparsers(dest="command", required=True)
-    voice = sub.add_parser("voice", help="Türkçe Piper modelini indir veya doğrula")
+    voice = sub.add_parser("voice", help="Türkçe karakter seslerini indir veya doğrula")
+    voice.add_argument("--piper", action="store_true", help="Eski tek sesli bölümler için Piper kur")
     voice.add_argument("--dir", type=Path, default=Path("models"))
     for name in ("brief", "generate", "make"):
         author = sub.add_parser(name, help={"brief":"Sohbet için bölüm isteği hazırla", "generate":"Codex CLI ile bölüm yaz ve çiz", "make":"Fikirden proje ve MP4 üret"}[name])
@@ -25,7 +26,7 @@ def main():
             author.add_argument("-o", "--output", type=Path, required=True)
             author.add_argument("--codex-model", default=os.environ.get("OPENSTORY_CODEX_MODEL"), help="Codex CLI oturumunda kullanılabilen model")
         if name == "make":
-            author.add_argument("--model", type=Path, default=Path("models") / MODEL)
+            author.add_argument("--model", type=Path, default=Path("models/seslen"))
             author.add_argument("--music-seed")
     for name in ("check", "preview", "render"):
         action = sub.add_parser(name, help={"check":"Bölüm dosyasını doğrula", "preview":"Bir planı PNG olarak çiz", "render":"Seslendir ve MP4 üret"}[name])
@@ -35,19 +36,19 @@ def main():
         if name == "preview":
             action.add_argument("--shot", type=int, default=1)
         if name == "render":
-            action.add_argument("--model", type=Path, default=Path("models") / MODEL)
+            action.add_argument("--model", type=Path)
             action.add_argument("--pace", type=float, default=1.0, help="Piper süre çarpanı (0.7–1.5)")
             action.add_argument("--music-seed", help="Melodi temasını bölümler arasında koru")
     args = cli.parse_args()
     if args.command == "voice":
-        install(args.dir)
+        install(args.dir, args.piper)
     elif args.command in ("brief", "generate", "make"):
         previous = read_story(args.previous) if args.previous else None
         prompt = brief(args.idea, previous)
         if args.command == "make":
             if args.output.exists() and (not args.output.is_dir() or any(args.output.iterdir())):
                 raise ValueError(f"Yeni bölüm için boş bir hedef adı seç: {args.output}")
-            if not args.model.is_file() or not args.model.with_suffix(".onnx.json").is_file():
+            if not args.model.is_dir() or not (args.model / "ses.onnx").is_file():
                 raise ValueError("Önce voice komutuyla modeli kur veya --model ile yerel ses seç.")
             source = args.output / "bolum.json"
             generate(prompt, source, args.codex_model)
@@ -61,7 +62,10 @@ def main():
     elif args.command == "render":
         if not 0.7 <= args.pace <= 1.5:
             raise ValueError("--pace 0.7 ile 1.5 arasında olmalı")
-        render(args.story, args.output, args.model, args.pace, args.music_seed)
+        model = args.model or Path("models/seslen")
+        if args.model is None and not model.exists() and read_story(args.story)["version"] == 1:
+            model = Path("models") / MODEL
+        render(args.story, args.output, model, args.pace, args.music_seed)
     else:
         data = read_story(args.story)
         if args.command == "preview":

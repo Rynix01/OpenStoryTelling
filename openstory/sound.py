@@ -12,20 +12,37 @@ FPS = 30
 
 
 def synthesize(data, model, pace):
-    if not model.is_file() or not model.with_suffix(".onnx.json").is_file():
-        raise ValueError("Piper ONNX modeli ve yanındaki .onnx.json dosyası gerekli. Önce voice komutunu çalıştır.")
-    voice = PiperVoice.load(model)
-    rate = voice.config.sample_rate
-    settings = SynthesisConfig(length_scale=pace)
+    if model.is_dir():
+        from seslen_tts import Seslen
+        from seslen_tts.model import DOSYALAR, ORAN
+        if not all((model / file).is_file() for file in DOSYALAR):
+            raise ValueError("Seslen modeli eksik. ost.py voice ile kur.")
+        voice = Seslen(klasor=str(model), denetim=False)
+        rate = ORAN
+
+        def speak(line):
+            if isinstance(line, str):
+                return voice.tum(line, ses="ege", ton="notr", hiz=1 / pace)
+            return voice.tum(line["text"], ses=data["voices"][line["speaker"]], ton=line["emotion"],
+                             yogunluk=line.get("intensity", 0.85), hiz=line.get("speed", 1) / pace)
+    else:
+        if data["version"] == 2 or not model.is_file() or not model.with_suffix(".onnx.json").is_file():
+            raise ValueError("Karakter sesleri için ost.py voice çalıştır ve Seslen klasörünü kullan.")
+        voice = PiperVoice.load(model)
+        rate = voice.config.sample_rate
+        settings = SynthesisConfig(length_scale=pace)
+
+        def speak(line):
+            chunks = [chunk.audio_float_array for chunk in voice.synthesize(line, settings)]
+            return np.concatenate(chunks) if chunks else np.empty(0)
     pieces, cues, shot_frames = [], [], []
     cursor = 0
     for shot_index, shot in enumerate(data["shots"]):
         start_frame = round(cursor * FPS / rate)
         for line_index, line in enumerate(shot["lines"]):
-            chunks = [chunk.audio_float_array for chunk in voice.synthesize(line, settings)]
-            if not chunks or not any(c.size for c in chunks):
-                raise ValueError(f"Piper boş ses üretti: {line}")
-            samples = np.concatenate(chunks)
+            samples = speak(line)
+            if not samples.size or not np.isfinite(samples).all():
+                raise ValueError(f"Ses üretilemedi: {line}")
             active = np.flatnonzero(np.abs(samples) > 0.009)
             if not active.size:
                 raise ValueError(f"Sessiz replik: {line}")
@@ -34,8 +51,10 @@ def synthesize(data, model, pace):
             start = cursor
             cursor += len(samples)
             pieces.append(samples * 0.70)
-            cues.append((start / rate, cursor / rate, line))
+            cues.append((start / rate, cursor / rate, line["text"] if isinstance(line, dict) else line))
             pause = 0.22 if line_index + 1 == len(shot["lines"]) else 0.13
+            if isinstance(line, dict):
+                pause = line.get("pause", 0.32)
             if shot_index + 1 == len(data["shots"]) and line_index + 1 == len(shot["lines"]):
                 pause = 1.1
             silence = round(pause * rate)
