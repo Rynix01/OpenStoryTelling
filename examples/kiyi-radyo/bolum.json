@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "title": "Kıyı Radyo · Sarı Kaset",
+  "cast": {
+    "Ece": "Genç radyo tamircisi. Koyu dalgalı küt saç, bakır toka, hardal sarısı iş ceketi. Birinci şahıs anlatıcı.",
+    "Selim": "Ece'nin babası. Bordo hırka, koyu bıyık, beyaz şakaklar.",
+    "Nermin": "Selim'in annesi. Hatıralarda pirinç küpe ve sarı hırka."
+  },
+  "continuity": "Dükkân yarın el değiştiriyor. Sarı kaset, teyp ve mikrofon Ece'de. Babasıyla kendi yayınlarını kaydetmeye karar verdiler.",
+  "art": {},
+  "boards": {
+    "kepenk": {
+      "file": "art/kepenk.webp"
+    },
+    "bant": {
+      "file": "art/bant.webp"
+    },
+    "selim": {
+      "file": "art/selim.webp"
+    },
+    "ece": {
+      "file": "art/ece.webp"
+    },
+    "dinleme": {
+      "file": "art/dinleme.webp"
+    },
+    "arka-yuz": {
+      "file": "art/arka-yuz.webp"
+    },
+    "dukkan": {
+      "file": "art/dukkan.webp"
+    },
+    "portre": {
+      "file": "art/portre.webp"
+    },
+    "lehim": {
+      "file": "art/lehim.webp"
+    },
+    "gozyasi": {
+      "file": "art/gozyasi.webp"
+    },
+    "eller": {
+      "file": "art/eller.webp"
+    },
+    "gece": {
+      "file": "art/gece.webp"
+    },
+    "fotograf": {
+      "file": "art/fotograf.webp"
+    }
+  },
+  "shots": [
+    {
+      "board": "selim",
+      "camera": "push",
+      "lines": [
+        "Babam, annesinin sesini duyar duymaz teybin fişini çekti."
+      ]
+    },
+    {
+      "board": "bant",
+      "camera": "hold",
+      "lines": [
+        "Ses kesilmedi.",
+        "Teyp pille çalışıyordu."
+      ]
+    },
+    {
+      "board": "kepenk",
+      "camera": "pull",
+      "lines": [
+        "O akşam dükkâna sadece kepengi indirmeye uğramıştım."
+      ]
+    },
+    {
+      "board": "dukkan",
+      "camera": "push",
+      "lines": [
+        "Babam yarın anahtarı yeni kiracıya verecekti.",
+        "Kırk yıldır ilk kez tezgâhın üstü görünüyordu."
+      ]
+    },
+    {
+      "board": "bant",
+      "camera": "push",
+      "lines": [
+        "En alttaki çekmeceden küçük, sarı bir kaset çıktı."
+      ]
+    },
+    {
+      "board": "ece",
+      "camera": "hold",
+      "lines": [
+        "Üzerinde benim adım vardı.",
+        "Altındaki tarihse ben doğmadan on iki yıl öncesiydi."
+      ]
+    },
+    {
+      "board": "selim",
+      "camera": "pull",
+      "lines": [
+        "Baba, dedim. Bizim ailede başka Ece mi var?"
+      ]
+    },
+    {
+      "board": "eller",
+      "camera": "push",
+      "lines": [
+        "Elindeki bezi katladı. Sonra açıp yeniden katladı."
+      ]
+    },
+    {
+      "board": "dinleme",
+      "camera": "push",
+      "lines": [
+        "Cevap vermeyince kaseti taktım.",
+        "Önce bir sandalye gıcırdadı."
+      ]
+    },
+    {
+      "board": "portre",
+      "camera": "hold",
+      "lines": [
+        "Sonra bir kadın güldü.",
+        "Selim, o kırmızı düğmeye basmadan kayıt nasıl başlasın oğlum?"
+      ]
+    },
+    {
+      "board": "selim",
+      "camera": "pull",
+      "lines": [
+        "Babamın fişi çektiği yer işte tam burasıydı."
+      ]
+    },
+    {
+      "board": "gozyasi",
+      "camera": "push",
+      "lines": [
+        "Kapatayım mı, dedim.",
+        "Bu defa başını iki yana salladı."
+      ]
+    },
+    {
+      "board": "fotograf",
+      "camera": "push",
+      "lines": [
+        "Tezgâhın camı altında yıllardır aynı fotoğraf dururdu."
+      ]
+    },
+    {
+      "board": "lehim",
+      "camera": "hold",
+      "lines": [
+        "Kulaklığı takan çocuğun babam olduğunu biliyordum.",
+        "Fotoğraftaki kadının nasıl güldüğünüyse ilk kez duyuyordum."
+      ]
+    },
+    {
+      "board": "ece",
+      "camera": "pull",
+      "lines": [
+        "Peki, benim adım o kasette ne arıyordu?"
+      ]
+    },
+    {
+      "board": "selim",
+      "camera": "push",
+      "lines": [
+        "Baban on dört yaşındayken iki kelimeyi zor birleştirirdi, dedi."
+      ]
+    },
+    {
+      "board": "dukkan",
+      "camera": "push",
+      "lines": [
+        "Dükkâna müşteri girince annem beni tezgâhın altından çıkaramazdı."
+      ]
+    },
+    {
+      "board": "lehim",
+      "camera": "hold",
+      "lines": [
+        "Bir akşam önüne bozuk bir mikrofon koymuş.",
+        "Bunu onar, beraber radyo kuralım, demiş."
+      ]
+    },
+    {
+      "board": "portre",
+      "camera": "pull",
+      "lines": [
+        "Annem ne isterse kendi programında söyleyebilecekti.",
+        "Ben de takılınca yayını başa sarabilecektim."
+      ]
+    },
+    {
+      "board": "dinleme",
+      "camera": "push",
+      "lines": [
+        "Bantta iki kere öksüren ince bir ses duyuldu."
+      ]
+    },
+    {
+      "board": "lehim",
+      "camera": "push",
+      "lines": [
+        "İyi akşamlar. Burası Kıyı Radyo.",
+        "İlk şarkımız bizi mutfaktan dinleyen tek dinleyicimize gidiyor."
+      ]
+    },
+    {
+      "board": "gozyasi",
+      "camera": "hold",
+      "lines": [
+        "Babam eski sesini tanıyınca birden utandı.",
+        "Sonraki kelimeyi ondan önce, şimdiki sesiyle fısıldadı."
+      ]
+    },
+    {
+      "board": "selim",
+      "camera": "pull",
+      "lines": [
+        "Anneme."
+      ]
+    },
+    {
+      "board": "eller",
+      "camera": "push",
+      "lines": [
+        "Elini tuttum. Bu kez geri çekmedi."
+      ]
+    },
+    {
+      "board": "ece",
+      "camera": "push",
+      "lines": [
+        "Ama hâlâ anlamamıştım.",
+        "Kasete benim adımı kim yazmıştı?"
+      ]
+    },
+    {
+      "board": "bant",
+      "camera": "hold",
+      "lines": [
+        "Babam kaseti çevirdi. Öteki yüzde yepyeni bir etiket vardı."
+      ]
+    },
+    {
+      "board": "arka-yuz",
+      "camera": "pull",
+      "lines": [
+        "Sen doğduğun gece yazdım, dedi.",
+        "Bir gün babaannem nasıl biriydi diye sorarsın sandım."
+      ]
+    },
+    {
+      "board": "ece",
+      "camera": "push",
+      "lines": [
+        "Peki niye hiç dinletmedin?",
+        "Babam başparmağıyla etiketin kalkmış köşesini düzeltti."
+      ]
+    },
+    {
+      "board": "selim",
+      "camera": "push",
+      "lines": [
+        "Ya bant koparsa diye korktum. Sesinden bir tane daha yok ki."
+      ]
+    },
+    {
+      "board": "dinleme",
+      "camera": "hold",
+      "lines": [
+        "B yüzünü açtık. Bu kez bebek ağlaması geldi."
+      ]
+    },
+    {
+      "board": "eller",
+      "camera": "pull",
+      "lines": [
+        "Arkasından genç bir baba fısıldadı.",
+        "İyi akşamlar Ece. Radyomuzun artık iki dinleyicisi var."
+      ]
+    },
+    {
+      "board": "dukkan",
+      "camera": "push",
+      "lines": [
+        "Yarın anahtarı verecektik. Eve sığacak tek bir eşya seçebilirdim."
+      ]
+    },
+    {
+      "board": "gece",
+      "camera": "push",
+      "lines": [
+        "Teybi çantama koydum. Kapıdan çıkarken babam koluma dokundu."
+      ]
+    },
+    {
+      "board": "ece",
+      "camera": "hold",
+      "lines": [
+        "Mikrofonu da al, dedi."
+      ]
+    },
+    {
+      "board": "gece",
+      "camera": "pull",
+      "lines": [
+        "Daha senin sesini kaydetmedik."
+      ]
+    }
+  ]
+}
