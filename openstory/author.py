@@ -24,6 +24,8 @@ eller, mekân ayrıntıları ve yakın/genel planlar için bilinçli seçimler y
 720×1280 koordinat alanı. art anahtarları ASCII harf, rakam, _ veya - kullanır.
 SVG parçasında g,path,rect,circle,ellipse,line,polyline,polygon ve basit çizim nitelikleri kullanılabilir.
 Metin, defs, href, stil sayfası ve url kullanma. Her pano için zemin ve sıralı katmanlar tanımla.
+Konuşan yüzlerde ağzın açık halini üst katmana çiz ve bu katmana "when":"speaking" ekle.
+Göz kapaklarını ayrı çizip "when":"blink" kullanabilirsin. Bu katmanlar sabit çizimin üstüne gelir.
 Kamera push, pull veya hold. Her repliği tek altyazıda okunacak 3–12 kelimelik nefes gruplarına böl.
 Her planın lines listesi o planda seslendirilecek sıralı metinleri içerir. Kaynak kod veya Markdown döndürme."""
     if previous:
@@ -32,7 +34,7 @@ Her planın lines listesi o planda seslendirilecek sıralı metinleri içerir. K
     return instructions + "\nBölüm isteği:\n" + idea
 
 
-def generate(prompt, target):
+def generate(prompt, target, model=None):
     if target.exists():
         raise ValueError(f"Hedef zaten var: {target}")
     binary = shutil.which("codex.exe" if os.name == "nt" else "codex")
@@ -41,10 +43,14 @@ def generate(prompt, target):
     target.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=target.parent) as tmp:
         answer = Path(tmp).resolve() / "answer.json"
-        command = [binary, "exec", "--ephemeral", "--skip-git-repo-check", "--sandbox", "read-only",
-                   "--output-last-message", str(answer), "-"]
+        command = [binary, "exec", "-c", 'forced_login_method="chatgpt"', "-c", 'model_provider="openai"',
+                   "--ephemeral", "--skip-git-repo-check", "--sandbox", "read-only"]
+        if model:
+            command.extend(["--model", model])
+        command.extend(["--output-last-message", str(answer), "-"])
         env = {k: v for k, v in os.environ.items() if k not in {"OPENAI_API_KEY", "CODEX_API_KEY"}}
-        subprocess.run(command, input=prompt.encode("utf-8"), env=env, cwd=tmp, check=True)
+        subprocess.run(command, input=prompt.encode("utf-8"), env=env, cwd=tmp,
+                       stdout=subprocess.DEVNULL, check=True)
         raw = answer.read_text(encoding="utf-8-sig").strip()
         if raw.startswith("```") and raw.endswith("```"):
             raw = raw.split("\n", 1)[1][:-3]

@@ -6,6 +6,8 @@ import tempfile
 import textwrap
 from pathlib import Path
 
+import numpy as np
+
 from .sound import FPS, mix, score, synthesize
 from .story import compose, read_story
 
@@ -50,12 +52,39 @@ def captions(cues, offset):
     return ASS + "\n".join(events) + "\n"
 
 
-def motion(shot, frames):
+def motion(shot, frames, animated=False):
     progress = f"on/{max(1, frames-1)}"
     modes = {"hold": "1", "push": f"1+0.085*{progress}", "pull": f"1.085-0.085*{progress}"}
     zoom = modes[shot.get("camera", "push")]
     return (f"scale=1440:2560,zoompan=z='{zoom}':x='iw/2-iw/zoom/2':"
-            f"y='(ih-ih/zoom)*0.4':d={frames}:s=720x1280:fps={FPS},setsar=1,ass=shot.ass")
+            f"y='(ih-ih/zoom)*0.4':d={1 if animated else frames}:s=720x1280:fps={FPS},setsar=1,ass=shot.ass")
+
+
+def mouth_intervals(speech, rate, first, count):
+    # Use short RMS windows to switch the mouth drawing at syllable boundaries.
+    levels = []
+    for frame in range(first, first + count):
+        sample = speech[round(frame * rate/FPS):round((frame+1) * rate/FPS)]
+        levels.append(float(np.sqrt(np.mean(sample**2))) if len(sample) else 0)
+    threshold = max(0.025, float(np.percentile(levels, 65)) * 0.8)
+    active = np.array([False, *(v > threshold for v in levels), False], dtype=int)
+    starts = np.flatnonzero(np.diff(active) == 1)
+    ends = np.flatnonzero(np.diff(active) == -1)
+    return "+".join(f"between(n,{a},{b-1})" for a, b in zip(starts, ends)) or "0"
+
+
+def shot_inputs(images, shot, frames, speech, rate, start):
+    if len(images) == 1:
+        return ["-i", images["always"].name, "-vf", motion(shot, frames)]
+    inputs = ["-loop", "1", "-framerate", str(FPS), "-i", images["always"].name]
+    filters, previous = [], "[0:v]"
+    for i, state in enumerate((s for s in ("speaking", "blink") if s in images), 1):
+        inputs.extend(["-i", images[state].name])
+        switch = mouth_intervals(speech, rate, start, frames) if state == "speaking" else f"lt(mod(n+{start}+41,113),4)"
+        filters.append(f"{previous}[{i}:v]overlay=enable='{switch}'[p{i}]")
+        previous = f"[p{i}]"
+    filters.append(previous + motion(shot, frames, animated=True) + "[film]")
+    return inputs + ["-filter_complex_threads", "2", "-filter_complex", ";".join(filters), "-map", "[film]"]
 
 
 def normalize(path):
@@ -88,13 +117,19 @@ def render(source, destination, model, pace, seed):
         for i, (shot, frames) in enumerate(zip(data["shots"], durations)):
             name = shot["board"]
             if name not in cache:
-                board_file = tmp / f"board{len(cache)}.png"
-                compose(data, name, source.parent).save(board_file)
-                cache[name] = board_file
+                layers = data["boards"][name].get("layers", [])
+                states = {"always"} | {layer.get("when", "always") for layer in layers}
+                files = {}
+                for state in sorted(states):
+                    board_file = tmp / f"board{len(cache)}-{state}.png"
+                    compose(data, name, source.parent, state=state).save(board_file)
+                    files[state] = board_file
+                cache[name] = files
             end = cue_index + len(shot["lines"])
             (tmp / "shot.ass").write_text(captions(cues[cue_index:end], start_frame / FPS), encoding="utf-8-sig")
             clip = f"shot{i:03}.mp4"
-            ffmpeg(["-i", cache[name].name, "-vf", motion(shot, frames), "-frames:v", str(frames),
+            inputs = shot_inputs(cache[name], shot, frames, speech, rate, start_frame)
+            ffmpeg([*inputs, "-frames:v", str(frames),
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
                     "-threads", "4", clip], tmp)
             segments.append(f"file '{clip}'")
@@ -105,7 +140,7 @@ def render(source, destination, model, pace, seed):
         gain = normalize(tmp)
         ffmpeg(["-f", "concat", "-safe", "1", "-i", "clips.txt", "-i", "mix.wav",
                 "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-af", gain, "-ar", "48000",
-                "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart",
+                "-c:a", "aac", "-b:a", "160k", "-t", f"{start_frame/FPS:.9f}", "-movflags", "+faststart",
                 "-metadata", f"title={data['title']}", "result/film.mp4"], tmp)
         srt = "\n\n".join(f"{i}\n{stamp(a,True)} --> {stamp(b,True)}\n{line}"
                           for i, (a, b, line) in enumerate(cues, 1))

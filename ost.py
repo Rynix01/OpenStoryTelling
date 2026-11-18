@@ -1,6 +1,5 @@
 """OpenStoryTelling command line."""
 import argparse
-import json
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -23,6 +22,7 @@ def main():
         author.add_argument("--previous", type=Path)
         if name == "generate":
             author.add_argument("-o", "--output", type=Path, required=True)
+            author.add_argument("--codex-model", help="Codex CLI oturumunda kullanılabilen model")
     for name in ("check", "preview", "render"):
         action = sub.add_parser(name, help={"check":"Bölüm dosyasını doğrula", "preview":"Bir planı PNG olarak çiz", "render":"Seslendir ve MP4 üret"}[name])
         action.add_argument("story", type=Path)
@@ -41,7 +41,7 @@ def main():
         previous = read_story(args.previous) if args.previous else None
         prompt = brief(args.idea, previous)
         if args.command == "generate":
-            generate(prompt, args.output)
+            generate(prompt, args.output, args.codex_model)
             print(args.output)
         else:
             print(prompt)

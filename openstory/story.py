@@ -53,6 +53,7 @@ def validate(data, folder):
             require(re.fullmatch(r"#[a-fA-F0-9]{6}", board.get("color", "")), f"Zemin rengi gerekli: {name}")
         for layer in board.get("layers", []):
             require(isinstance(layer, dict) and layer.get("art") in art, f"Bilinmeyen çizim: {name}")
+            require(layer.get("when", "always") in {"always", "speaking", "blink"}, f"Geçersiz hareket: {name}")
             for field, default, low, high in (("x", 0, -4000, 4000), ("y", 0, -4000, 4000), ("scale", 1, 0.01, 12), ("angle", 0, -360, 360)):
                 require(bounded(layer.get(field, default), low, high), f"Geçersiz konum: {name}/{field}")
     require(isinstance(shots, list) and 1 <= len(shots) <= 200, "1–200 plan gerekli")
@@ -68,19 +69,26 @@ def read_story(path):
     return validate(json.loads(path.read_text(encoding="utf-8-sig")), path.parent)
 
 
-def compose(data, name, folder, size=(720, 1280)):
+def compose(data, name, folder, size=(720, 1280), state="always"):
     board = data["boards"][name]
-    if "file" in board:
+    if state != "always":
+        base = Image.new("RGBA", size)
+    elif "file" in board:
         with Image.open(folder / board["file"]) as src:
             base = ImageOps.fit(ImageOps.exif_transpose(src).convert("RGB"), size)
     else:
         base = Image.new("RGB", size, board["color"])
     groups = []
     for layer in board.get("layers", []):
+        if layer.get("when", "always") != state:
+            continue
         transform = f"translate({layer.get('x', 0)} {layer.get('y', 0)}) rotate({layer.get('angle', 0)}) scale({layer.get('scale', 1)})"
         groups.append(f'<g transform="{transform}">{data["art"][layer["art"]]}</g>')
     if groups:
         svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{size[0]}" height="{size[1]}" viewBox="0 0 720 1280">{"".join(groups)}</svg>'
         ink = Image.open(io.BytesIO(resvg_py.svg_to_bytes(svg_string=svg))).convert("RGBA")
-        base.paste(ink, mask=ink.getchannel("A"))
+        if state == "always":
+            base.paste(ink, mask=ink.getchannel("A"))
+        else:
+            base.alpha_composite(ink)
     return base
