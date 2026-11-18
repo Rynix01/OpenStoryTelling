@@ -11,6 +11,16 @@ Dört yerel MP4'ün tamamını dört saniye aralıklarla örnekledik. Görüntü
 
 Ortak teslim formatı 720×1280, 9:16, 30 fps, H.264 görüntü ve 48 kHz stereo AAC ses. Ölçümler bitmiş mikse ait. Konuşmanın ve müziğin ayrı seviyeleri ile kullanılan TTS motoru bu değerlerden çıkarılamaz.
 
+## Konuşma temposu ve bakış açısı
+
+Dört ses kanalının tamamını yerel Whisper ile Türkçe olarak çözüp replikleri sahne örnekleriyle karşılaştırdık. Otomatik dökümde yaklaşık 280, 283, 250 ve 289 sözcük çıktı. Jenerik ve duraklamalar dahil bölüm süresine böldüğümüzde sırasıyla dakikada yaklaşık **100, 101, 102 ve 108 sözcük** ediyor. Şarkı, özel adlar ve kısa ünlemler tanıma hatasına açık. İki buçuk dakikalık yeni bir metin için 250–270 sözcük bu dört örnekten çıkan başlangıç noktasıdır.
+
+İlk bölümde Barış başka bir hayata uyandığını içinden anlatıyor. Aslı aynı davranışları eski şiddetin geri dönme ihtimali üzerinden yorumluyor. Biri yemek almak için çıkarken diğeri yeniden içmeye gittiğini düşünüyor. Bu karşıt okumayı göstermek için eylemi yapanın yüzünden onu izleyenin yüzüne kesiliyor.
+
+İkinci bölümde gitarın bir işlevi de müzik yapmak. Barış yazdığı şarkıyı seslendiriyor, Aslı'nın geçmişte bıraktığı müzik hayatı ve Nil'in tepkisi bunun üstüne kuruluyor. Sürekli çalan fon melodisiyle karakterin sahnede çaldığı bu şarkı, kurgu açısından ayrı görevler taşıyor.
+
+Üçüncü bölümde izin isteyen kişi Barış. Aslı'nın iki yıldır böyle bir soruyla karşılaşmadığını içinden söylemesi, kısa çamaşır konuşmasının anlamını değiştiriyor. Bölüm sonunda Nil'in ona baba diye seslenmesi, dördüncü bölümün ilk oyuncağına geçişi hazırlıyor. Dördüncü bölümün sonunda kahvaltı sırasındaki rahatlama, telefonda şarkının durumuna bakılmasıyla kesiliyor. Dizinin aile ve müzik öyküleri aynı kapanışta yeniden birleşiyor.
+
 ## Bölümler nasıl ilerliyor?
 
 **Bölüm 1.** İlk yarım dakikada koltuktaki adamın yüzü ile anne ve çocuğun tedirgin tepkileri arasında gidip geliyoruz. Duvardaki sahne afişine kesme, Aslı'nın geçmişini bir nesne üzerinden anlatıyor. Yaklaşık 1:24'te renkler soğuyor ve yatak odasının eşiği aile üyeleri arasındaki mesafeyi gösteriyor. Sabah ışığına geçişle kahvaltı, gitar ve alışveriş torbaları görünüyor. Karakterdeki değişimi yüzlerdeki tepki ve ev işleri üzerinden okuyoruz.

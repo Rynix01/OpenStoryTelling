@@ -12,6 +12,7 @@ from .story import validate
 def brief(idea, previous=None):
     instructions = """Bir Türkçe dikey çizgi hikâye bölümü yaz ve çiz. Tek bir geçerli JSON nesnesi döndür.
 İzleyiciyi ilk replikte somut bir merakla yakala. Eylem, tepki, nesne detayı ve kapanış kullan.
+Referans dizi temposu dakikada yaklaşık 100–108 sözcük. İstenen süreye göre metin uzunluğunu ayarla.
 Birinci şahıs anlatıcı ve kısa doğal diyaloglar yaz. Kullanıcı süre vermediyse yaklaşık 2,5 dakika hedefle.
 Aynı karakterin saçını, yüzünü ve kıyafetini her planda aynı art parçasından kur.
 Çizimleri sen tasarla. SVG içeriğini JSON dizelerine yaz. Renkler, konturlar, yüz ifadesi,
