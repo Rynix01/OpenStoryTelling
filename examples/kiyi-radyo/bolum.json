@@ -1,313 +1,740 @@
 {
-  "version": 1,
-  "title": "Kıyı Radyo · Sarı Kaset",
+  "version": 2,
+  "title": "Sarı Kaset",
   "cast": {
-    "Ece": "Genç radyo tamircisi. Koyu dalgalı küt saç, bakır toka, hardal sarısı iş ceketi. Birinci şahıs anlatıcı.",
-    "Selim": "Ece'nin babası. Bordo hırka, koyu bıyık, beyaz şakaklar.",
-    "Nermin": "Selim'in annesi. Hatıralarda pirinç küpe ve sarı hırka."
+    "Ece": "Genç kadın. Babasının eski kasetini bulur.",
+    "Selim": "Ece'nin babası, radyo tamircisi.",
+    "KucukSelim": "Selim'in dokuz yaşındaki hâli.",
+    "Nermin": "Genç Selim'in annesi."
   },
-  "continuity": "Dükkân yarın el değiştiriyor. Sarı kaset, teyp ve mikrofon Ece'de. Babasıyla kendi yayınlarını kaydetmeye karar verdiler.",
-  "art": {},
+  "voices": {
+    "Ece": "nehir",
+    "Selim": "serdar",
+    "KucukSelim": "can",
+    "Nermin": "ayse"
+  },
+  "continuity": "Dükkân kapanıyor. Ece ile babası kaseti saklayıp evde birlikte yayın yapacaklar.",
+  "puppets": {
+    "Ece": {
+      "hair": "bob",
+      "hair_color": "#43333a",
+      "skin": "#e8bb95",
+      "coat": "#d69b46",
+      "trim": "#e8c285",
+      "pants": "#405659"
+    },
+    "Selim": {
+      "hair": "silver",
+      "hair_color": "#938679",
+      "skin": "#d5a37f",
+      "coat": "#a35545",
+      "trim": "#ce8a66",
+      "pants": "#404850"
+    },
+    "KucukSelim": {
+      "hair": "crop",
+      "hair_color": "#523d38",
+      "skin": "#e3b38b",
+      "coat": "#698c8b",
+      "trim": "#c8c8a7",
+      "pants": "#535b62",
+      "child": true
+    },
+    "Nermin": {
+      "hair": "wave",
+      "hair_color": "#544035",
+      "skin": "#e4b28c",
+      "coat": "#bb8243",
+      "trim": "#f0ce94",
+      "pants": "#596b62"
+    }
+  },
+  "art": {
+    "bench": "<path d='M-40 1040 L730 1000 L795 1061 L-40 1118Z' fill='#976a49' stroke='#473d37' stroke-width='4'/><path d='M-40 1118 L795 1061 V1290 H-40Z' fill='#694d3d' stroke='#493d33' stroke-width='4'/><path d='M5 1137 L695 1090 M83 1206 L570 1172 M156 1068 L370 1057' stroke='#af8359' fill='none' stroke-width='2'/>",
+    "player": "<g stroke='#493f36' stroke-linejoin='round' stroke-width='3'><path d='M-101 12 L-76-48 L81-53 L109 6 L98 30 L-99 34Z' fill='#bda479'/><path d='M-101 12 L109 6 L98 30 L-99 34Z' fill='#766d5c'/><path d='M-69-36 L-9-38 L-17-5 L-81-2Z' fill='#665d4e'/><path d='M3-39 L64-40 L74-17 L-1-15Z' fill='#834c38'/><path d='M3-33 L57-34 L61-22 L0-22Z' fill='#c6ad76'/><path d='M-3-7 L77-9 L82 3 L-6 6Z' fill='#e3c99a'/><path d='M9-7 L8 4 M25-7 L25 4 M42-8 L43 3 M58-8 L59 2' fill='none'/></g>"
+  },
   "boards": {
-    "kepenk": {
-      "file": "art/kepenk.webp"
+    "dukkanda": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 175,
+          "y": 525,
+          "scale": 1.29,
+          "face": "right",
+          "gesture": "heart",
+          "emotion": "merak",
+          "prop": "cassette"
+        },
+        {
+          "id": "Selim",
+          "x": 553,
+          "y": 493,
+          "scale": 1.39,
+          "face": "left",
+          "gesture": "reach",
+          "emotion": "uyari"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     },
-    "bant": {
-      "file": "art/bant.webp"
-    },
-    "selim": {
-      "file": "art/selim.webp"
+    "baba": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Selim",
+          "x": 402,
+          "y": 420,
+          "scale": 2.85,
+          "face": "left",
+          "gesture": "recoil",
+          "emotion": "uyari"
+        }
+      ],
+      "layers": []
     },
     "ece": {
-      "file": "art/ece.webp"
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 294,
+          "y": 397,
+          "scale": 2.8,
+          "face": "right",
+          "gesture": "heart",
+          "emotion": "merak",
+          "prop": "cassette"
+        }
+      ],
+      "layers": []
     },
-    "dinleme": {
-      "file": "art/dinleme.webp"
+    "bant": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 183,
+          "y": 410,
+          "scale": 2.31,
+          "face": "right",
+          "gesture": "offer",
+          "emotion": "merak",
+          "prop": "cassette"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 519,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     },
-    "arka-yuz": {
-      "file": "art/arka-yuz.webp"
+    "birlikte": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 158,
+          "y": 462,
+          "scale": 1.46,
+          "face": "right",
+          "gesture": "listen",
+          "emotion": "merak"
+        },
+        {
+          "id": "Selim",
+          "x": 548,
+          "y": 439,
+          "scale": 1.48,
+          "face": "left",
+          "gesture": "heart",
+          "emotion": "uzgun"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     },
-    "dukkan": {
-      "file": "art/dukkan.webp"
+    "kayit": {
+      "file": "art/eskiden.webp",
+      "actors": [
+        {
+          "id": "KucukSelim",
+          "x": 171,
+          "y": 571,
+          "scale": 1.23,
+          "face": "right",
+          "gesture": "heart",
+          "emotion": "merak",
+          "prop": "mic"
+        },
+        {
+          "id": "Nermin",
+          "x": 534,
+          "y": 473,
+          "scale": 1.45,
+          "face": "left",
+          "gesture": "reach",
+          "emotion": "neseli"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     },
-    "portre": {
-      "file": "art/portre.webp"
+    "cocuk": {
+      "file": "art/eskiden.webp",
+      "actors": [
+        {
+          "id": "KucukSelim",
+          "x": 210,
+          "y": 462,
+          "scale": 2.33,
+          "face": "right",
+          "gesture": "heart",
+          "emotion": "merak",
+          "prop": "mic"
+        }
+      ],
+      "layers": []
     },
-    "lehim": {
-      "file": "art/lehim.webp"
+    "anne": {
+      "file": "art/eskiden.webp",
+      "actors": [
+        {
+          "id": "Nermin",
+          "x": 450,
+          "y": 391,
+          "scale": 2.65,
+          "face": "left",
+          "gesture": "offer",
+          "emotion": "neseli"
+        }
+      ],
+      "layers": []
     },
-    "gozyasi": {
-      "file": "art/gozyasi.webp"
+    "yayinda": {
+      "file": "art/eskiden.webp",
+      "actors": [
+        {
+          "id": "KucukSelim",
+          "x": 251,
+          "y": 462,
+          "scale": 2.11,
+          "face": "right",
+          "gesture": "listen",
+          "emotion": "heyecan",
+          "prop": "mic"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     },
-    "eller": {
-      "file": "art/eller.webp"
+    "dinlerken": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Selim",
+          "x": 405,
+          "y": 399,
+          "scale": 2.77,
+          "face": "left",
+          "gesture": "wipe",
+          "emotion": "uzgun"
+        }
+      ],
+      "layers": []
     },
-    "gece": {
-      "file": "art/gece.webp"
+    "kizim": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 260,
+          "y": 432,
+          "scale": 2.59,
+          "face": "right",
+          "gesture": "offer",
+          "emotion": "ozur"
+        }
+      ],
+      "layers": []
     },
-    "fotograf": {
-      "file": "art/fotograf.webp"
+    "yaninda": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 183,
+          "y": 478,
+          "scale": 1.46,
+          "face": "right",
+          "gesture": "reach",
+          "emotion": "ozur"
+        },
+        {
+          "id": "Selim",
+          "x": 497,
+          "y": 462,
+          "scale": 1.52,
+          "face": "left",
+          "gesture": "offer",
+          "emotion": "uzgun"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
+    },
+    "son": {
+      "file": "art/bugun.webp",
+      "actors": [
+        {
+          "id": "Ece",
+          "x": 160,
+          "y": 477,
+          "scale": 1.46,
+          "face": "right",
+          "gesture": "heart",
+          "emotion": "neseli",
+          "prop": "mic"
+        },
+        {
+          "id": "Selim",
+          "x": 507,
+          "y": 460,
+          "scale": 1.49,
+          "face": "left",
+          "gesture": "reach",
+          "emotion": "neseli"
+        }
+      ],
+      "layers": [
+        {
+          "art": "bench",
+          "when": "front"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1020,
+          "scale": 1.12,
+          "when": "front"
+        }
+      ]
     }
   },
   "shots": [
     {
-      "board": "selim",
+      "board": "dukkanda",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Ece, dur! O kaseti sakın geri sarma.",
+          "emotion": "uyari",
+          "gesture": "reach",
+          "pause": 0.44
+        }
+      ]
+    },
+    {
+      "board": "ece",
       "camera": "push",
       "lines": [
-        "Babam, annesinin sesini duyar duymaz teybin fişini çekti."
+        {
+          "speaker": "Ece",
+          "text": "Baba, üstünde benim adım var. Neden dinlemeyeyim?",
+          "emotion": "merak",
+          "gesture": "offer"
+        }
+      ]
+    },
+    {
+      "board": "baba",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Bir ucunu ben bantladım. Koparsa bir daha bağlayamam.",
+          "emotion": "uzgun",
+          "gesture": "heart",
+          "pause": 0.56
+        }
       ]
     },
     {
       "board": "bant",
-      "camera": "hold",
-      "lines": [
-        "Ses kesilmedi.",
-        "Teyp pille çalışıyordu."
-      ]
-    },
-    {
-      "board": "kepenk",
       "camera": "pull",
       "lines": [
-        "O akşam dükkâna sadece kepengi indirmeye uğramıştım."
+        {
+          "speaker": "Ece",
+          "text": "Şu köşesine bak. Bu benim doğduğum yıl bile değil.",
+          "emotion": "merak",
+          "gesture": "point"
+        }
       ]
     },
     {
-      "board": "dukkan",
-      "camera": "push",
+      "board": "dukkanda",
+      "camera": "hold",
       "lines": [
-        "Babam yarın anahtarı yeni kiracıya verecekti.",
-        "Kırk yıldır ilk kez tezgâhın üstü görünüyordu."
+        {
+          "speaker": "Selim",
+          "text": "O etiketi yıllar sonra yazdım kızım.",
+          "emotion": "ozur",
+          "gesture": "heart"
+        }
       ]
     },
     {
-      "board": "bant",
+      "board": "kizim",
       "camera": "push",
       "lines": [
-        "En alttaki çekmeceden küçük, sarı bir kaset çıktı."
+        {
+          "speaker": "Ece",
+          "text": "Peki, bir kez dinlesek? Elim düğmenin üstünde durur.",
+          "emotion": "fisilti",
+          "gesture": "offer",
+          "pause": 0.56
+        }
+      ]
+    },
+    {
+      "board": "birlikte",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Pekâlâ. Sadece biraz kıs sesini.",
+          "emotion": "fisilti",
+          "gesture": "press",
+          "pause": 0.72
+        }
+      ]
+    },
+    {
+      "board": "kayit",
+      "camera": "pull",
+      "lines": [
+        {
+          "speaker": "KucukSelim",
+          "text": "Anne, şimdi konuşursam bütün mahalle duyar mı?",
+          "emotion": "merak",
+          "gesture": "heart"
+        }
+      ]
+    },
+    {
+      "board": "anne",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Nermin",
+          "text": "Keşke duysa! Şimdilik bir tek ben varım dinleyen.",
+          "emotion": "neseli",
+          "gesture": "offer"
+        }
+      ]
+    },
+    {
+      "board": "cocuk",
+      "camera": "push",
+      "lines": [
+        {
+          "speaker": "KucukSelim",
+          "text": "Ya yine takılırsam? Dün adımı bile söyleyemedim.",
+          "emotion": "fisilti",
+          "gesture": "recoil",
+          "pause": 0.5
+        }
+      ]
+    },
+    {
+      "board": "anne",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Nermin",
+          "text": "O zaman ben beklerim. Bizim radyomuzun hiç acelesi yok.",
+          "emotion": "fisilti",
+          "gesture": "heart",
+          "pause": 0.66
+        }
+      ]
+    },
+    {
+      "board": "kayit",
+      "camera": "pull",
+      "lines": [
+        {
+          "speaker": "Nermin",
+          "text": "Sen şu kırmızı düğmeye bas. Ben de gözlerimi kapatayım.",
+          "emotion": "neseli",
+          "gesture": "press"
+        }
+      ]
+    },
+    {
+      "board": "yayinda",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "KucukSelim",
+          "text": "İyi akşamlar. Burası Kıyı Radyo.",
+          "emotion": "merak",
+          "gesture": "heart",
+          "pause": 0.46
+        }
+      ]
+    },
+    {
+      "board": "cocuk",
+      "camera": "push",
+      "lines": [
+        {
+          "speaker": "KucukSelim",
+          "text": "Bugünkü ilk şarkı, mutfaktan bizi dinleyen anneme gidiyor!",
+          "emotion": "heyecan",
+          "gesture": "wave",
+          "pause": 0.55
+        }
+      ]
+    },
+    {
+      "board": "anne",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Nermin",
+          "text": "Duydum seni Selim! Bak, mutfaktan alkış da geliyor!",
+          "emotion": "heyecan",
+          "gesture": "wave"
+        }
+      ]
+    },
+    {
+      "board": "birlikte",
+      "camera": "pull",
+      "lines": [
+        {
+          "speaker": "Ece",
+          "text": "Konuşan çocuk... Baba, o sen misin?",
+          "emotion": "merak",
+          "gesture": "point",
+          "pause": 0.41
+        }
+      ]
+    },
+    {
+      "board": "dinlerken",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Annem mutfağa hiç gitmemişti. Yanımda, şu taburede oturuyordu.",
+          "emotion": "uzgun",
+          "gesture": "wipe",
+          "pause": 0.68
+        }
+      ]
+    },
+    {
+      "board": "baba",
+      "camera": "push",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Kendimi gerçekten radyodaymışım gibi hissedeyim istemiş.",
+          "emotion": "uzgun",
+          "gesture": "heart"
+        }
+      ]
+    },
+    {
+      "board": "kizim",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Ece",
+          "text": "İstersen burada duralım baba. Kapatayım mı?",
+          "emotion": "ozur",
+          "gesture": "offer",
+          "pause": 0.53
+        }
+      ]
+    },
+    {
+      "board": "yaninda",
+      "camera": "pull",
+      "lines": [
+        {
+          "speaker": "Selim",
+          "text": "Hayır, biraz daha kalsın. Gülüşünü unutmuşum.",
+          "emotion": "fisilti",
+          "gesture": "listen",
+          "pause": 0.78
+        }
       ]
     },
     {
       "board": "ece",
       "camera": "hold",
       "lines": [
-        "Üzerinde benim adım vardı.",
-        "Altındaki tarihse ben doğmadan on iki yıl öncesiydi."
+        {
+          "speaker": "Ece",
+          "text": "Peki öbür yüzüne niye benim adımı yazdın?",
+          "emotion": "merak",
+          "gesture": "reach"
+        }
       ]
     },
     {
-      "board": "selim",
-      "camera": "pull",
-      "lines": [
-        "Baba, dedim. Bizim ailede başka Ece mi var?"
-      ]
-    },
-    {
-      "board": "eller",
+      "board": "baba",
       "camera": "push",
       "lines": [
-        "Elindeki bezi katladı. Sonra açıp yeniden katladı."
+        {
+          "speaker": "Selim",
+          "text": "Senin ilk gecendi. Hastanede ikimiz de uyuyamamıştık.",
+          "emotion": "neseli",
+          "gesture": "heart"
+        }
       ]
     },
     {
-      "board": "dinleme",
-      "camera": "push",
-      "lines": [
-        "Cevap vermeyince kaseti taktım.",
-        "Önce bir sandalye gıcırdadı."
-      ]
-    },
-    {
-      "board": "portre",
+      "board": "yaninda",
       "camera": "hold",
       "lines": [
-        "Sonra bir kadın güldü.",
-        "Selim, o kırmızı düğmeye basmadan kayıt nasıl başlasın oğlum?"
+        {
+          "speaker": "Selim",
+          "text": "Annem bana cesaret vermişti. Ben de sana bir yayın yaptım.",
+          "emotion": "neseli",
+          "gesture": "offer"
+        }
       ]
     },
     {
-      "board": "selim",
+      "board": "kizim",
       "camera": "pull",
       "lines": [
-        "Babamın fişi çektiği yer işte tam burasıydı."
+        {
+          "speaker": "Ece",
+          "text": "Ne söyledin bana, hatırlıyor musun?",
+          "emotion": "merak",
+          "gesture": "listen"
+        }
       ]
     },
     {
-      "board": "gozyasi",
-      "camera": "push",
-      "lines": [
-        "Kapatayım mı, dedim.",
-        "Bu defa başını iki yana salladı."
-      ]
-    },
-    {
-      "board": "fotograf",
-      "camera": "push",
-      "lines": [
-        "Tezgâhın camı altında yıllardır aynı fotoğraf dururdu."
-      ]
-    },
-    {
-      "board": "lehim",
+      "board": "dinlerken",
       "camera": "hold",
       "lines": [
-        "Kulaklığı takan çocuğun babam olduğunu biliyordum.",
-        "Fotoğraftaki kadının nasıl güldüğünüyse ilk kez duyuyordum."
+        {
+          "speaker": "Selim",
+          "text": "İyi akşamlar Ece. Radyomuzun artık iki dinleyicisi var.",
+          "emotion": "fisilti",
+          "gesture": "heart",
+          "pause": 0.8
+        }
       ]
     },
     {
-      "board": "ece",
-      "camera": "pull",
-      "lines": [
-        "Peki, benim adım o kasette ne arıyordu?"
-      ]
-    },
-    {
-      "board": "selim",
+      "board": "birlikte",
       "camera": "push",
       "lines": [
-        "Baban on dört yaşındayken iki kelimeyi zor birleştirirdi, dedi."
+        {
+          "speaker": "Ece",
+          "text": "Yarın bu dükkânı kapatsak da radyoyu açık tutabiliriz.",
+          "emotion": "neseli",
+          "gesture": "reach"
+        }
       ]
     },
     {
-      "board": "dukkan",
-      "camera": "push",
-      "lines": [
-        "Dükkâna müşteri girince annem beni tezgâhın altından çıkaramazdı."
-      ]
-    },
-    {
-      "board": "lehim",
+      "board": "baba",
       "camera": "hold",
       "lines": [
-        "Bir akşam önüne bozuk bir mikrofon koymuş.",
-        "Bunu onar, beraber radyo kuralım, demiş."
+        {
+          "speaker": "Selim",
+          "text": "Öyle mi? Peki ilk programı kim sunacak?",
+          "emotion": "merak",
+          "gesture": "offer"
+        }
       ]
     },
     {
-      "board": "portre",
+      "board": "son",
       "camera": "pull",
       "lines": [
-        "Annem ne isterse kendi programında söyleyebilecekti.",
-        "Ben de takılınca yayını başa sarabilecektim."
-      ]
-    },
-    {
-      "board": "dinleme",
-      "camera": "push",
-      "lines": [
-        "Bantta iki kere öksüren ince bir ses duyuldu."
-      ]
-    },
-    {
-      "board": "lehim",
-      "camera": "push",
-      "lines": [
-        "İyi akşamlar. Burası Kıyı Radyo.",
-        "İlk şarkımız bizi mutfaktan dinleyen tek dinleyicimize gidiyor."
-      ]
-    },
-    {
-      "board": "gozyasi",
-      "camera": "hold",
-      "lines": [
-        "Babam eski sesini tanıyınca birden utandı.",
-        "Sonraki kelimeyi ondan önce, şimdiki sesiyle fısıldadı."
-      ]
-    },
-    {
-      "board": "selim",
-      "camera": "pull",
-      "lines": [
-        "Anneme."
-      ]
-    },
-    {
-      "board": "eller",
-      "camera": "push",
-      "lines": [
-        "Elini tuttum. Bu kez geri çekmedi."
-      ]
-    },
-    {
-      "board": "ece",
-      "camera": "push",
-      "lines": [
-        "Ama hâlâ anlamamıştım.",
-        "Kasete benim adımı kim yazmıştı?"
-      ]
-    },
-    {
-      "board": "bant",
-      "camera": "hold",
-      "lines": [
-        "Babam kaseti çevirdi. Öteki yüzde yepyeni bir etiket vardı."
-      ]
-    },
-    {
-      "board": "arka-yuz",
-      "camera": "pull",
-      "lines": [
-        "Sen doğduğun gece yazdım, dedi.",
-        "Bir gün babaannem nasıl biriydi diye sorarsın sandım."
-      ]
-    },
-    {
-      "board": "ece",
-      "camera": "push",
-      "lines": [
-        "Peki niye hiç dinletmedin?",
-        "Babam başparmağıyla etiketin kalkmış köşesini düzeltti."
-      ]
-    },
-    {
-      "board": "selim",
-      "camera": "push",
-      "lines": [
-        "Ya bant koparsa diye korktum. Sesinden bir tane daha yok ki."
-      ]
-    },
-    {
-      "board": "dinleme",
-      "camera": "hold",
-      "lines": [
-        "B yüzünü açtık. Bu kez bebek ağlaması geldi."
-      ]
-    },
-    {
-      "board": "eller",
-      "camera": "pull",
-      "lines": [
-        "Arkasından genç bir baba fısıldadı.",
-        "İyi akşamlar Ece. Radyomuzun artık iki dinleyicisi var."
-      ]
-    },
-    {
-      "board": "dukkan",
-      "camera": "push",
-      "lines": [
-        "Yarın anahtarı verecektik. Eve sığacak tek bir eşya seçebilirdim."
-      ]
-    },
-    {
-      "board": "gece",
-      "camera": "push",
-      "lines": [
-        "Teybi çantama koydum. Kapıdan çıkarken babam koluma dokundu."
-      ]
-    },
-    {
-      "board": "ece",
-      "camera": "hold",
-      "lines": [
-        "Mikrofonu da al, dedi."
-      ]
-    },
-    {
-      "board": "gece",
-      "camera": "pull",
-      "lines": [
-        "Daha senin sesini kaydetmedik."
+        {
+          "speaker": "Ece",
+          "text": "İyi akşamlar baba. Bugünkü ilk şarkı sana gidiyor.",
+          "emotion": "heyecan",
+          "gesture": "heart",
+          "pause": 1.05
+        }
       ]
     }
   ]
