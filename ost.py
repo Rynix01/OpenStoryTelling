@@ -45,7 +45,7 @@ def main():
         previous = read_story(args.previous) if args.previous else None
         prompt = brief(args.idea, previous)
         if args.command == "make":
-            if args.output.exists():
+            if args.output.exists() and (not args.output.is_dir() or any(args.output.iterdir())):
                 raise ValueError(f"Yeni bölüm için boş bir hedef adı seç: {args.output}")
             if not args.model.is_file() or not args.model.with_suffix(".onnx.json").is_file():
                 raise ValueError("Önce voice komutuyla modeli kur veya --model ile yerel ses seç.")

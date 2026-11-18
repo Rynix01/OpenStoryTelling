@@ -51,7 +51,10 @@ def validate(data, folder):
             require(path.is_relative_to(folder.resolve()) and path.is_file() and path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}, f"Görsel bulunamadı: {name}")
         else:
             require(re.fullmatch(r"#[a-fA-F0-9]{6}", board.get("color", "")), f"Zemin rengi gerekli: {name}")
-        for layer in board.get("layers", []):
+        layers = board.get("layers", [])
+        require(isinstance(layers, list), f"Katman listesi gerekli: {name}")
+        require("file" in board or layers, f"Plan için bir çizim veya dosya gerekli: {name}")
+        for layer in layers:
             require(isinstance(layer, dict) and layer.get("art") in art, f"Bilinmeyen çizim: {name}")
             require(layer.get("when", "always") in {"always", "speaking", "blink"}, f"Geçersiz hareket: {name}")
             for field, default, low, high in (("x", 0, -4000, 4000), ("y", 0, -4000, 4000), ("scale", 1, 0.01, 12), ("angle", 0, -360, 360)):
