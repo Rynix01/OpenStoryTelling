@@ -15,6 +15,8 @@ SHAPES = {"g", "path", "rect", "circle", "ellipse", "line", "polyline", "polygon
 TONES = {"notr", "neseli", "heyecan", "uyari", "merak", "ozur", "uzgun", "kizgin", "fisilti"}
 VOICES = {"nehir", "ege", "ayse", "serdar", "zeynep", "emre", "selin", "fatma",
           "hasan", "elif", "can", "ece", "pitircik", "koca", "firfir", "kara"}
+ROLE_VOICES = {"woman":{"nehir","ayse","zeynep","selin","fatma"}, "man":{"ege","serdar","emre","hasan"},
+               "girl":{"elif","ece"}, "boy":{"can"}}
 ATTRIBUTES = set("""transform d fill stroke stroke-width stroke-linejoin stroke-linecap
     fill-rule opacity fill-opacity stroke-opacity points x y width height x1 x2 y1 y2
     cx cy rx ry r stroke-dasharray""".split())
@@ -51,6 +53,11 @@ def validate(data, folder):
     require(isinstance(puppets, dict), "puppets nesne olmalı")
     for name, p in puppets.items():
         require(name in data["cast"] and isinstance(p, dict) and p.get("hair") in HAIR, f"Oyuncu çizimi geçersiz: {name}")
+        role = p.get("role")
+        if role is not None:
+            require(role in ROLE_VOICES and (name not in data.get("voices", {}) or data["voices"][name] in ROLE_VOICES[role]), f"Ses yaş/cinsiyet rolüyle uyuşmuyor: {name}")
+        if p.get("child") and name in data.get("voices", {}):
+            require(data["voices"][name] in ROLE_VOICES["girl"] | ROLE_VOICES["boy"], f"Çocuk sesi gerekli: {name}")
         require(all(isinstance(p.get(k), str) and re.fullmatch(r"#[0-9a-fA-F]{6}", p[k]) for k in ("skin","hair_color","coat","trim","pants")), f"Oyuncu paleti geçersiz: {name}")
     require(isinstance(art, dict) and isinstance(boards, dict), "art ve boards nesne olmalı")
     for name, fragment in art.items():
@@ -71,6 +78,8 @@ def validate(data, folder):
         for a in actors:
             require(data["version"] == 2 and isinstance(a, dict) and a.get("id") in puppets, f"Plan oyuncusu bulunamadı: {name}")
             require(a.get("gesture","rest") in GESTURES and a.get("prop","") in PROPS | {""} and a.get("emotion","notr") in TONES, f"Oyuncu hareketi geçersiz: {name}")
+            if "propArt" in a:
+                require(a["propArt"] in art and not a.get("prop"), f"Elde tutulan çizim geçersiz: {name}")
             require(a.get("face","right") in {"left","right"} and bounded(a.get("x"),-4000,4000) and bounded(a.get("y"),-4000,4000) and bounded(a.get("scale"),.05,12), f"Oyuncu konumu geçersiz: {name}")
         for layer in layers:
             require(isinstance(layer, dict) and layer.get("art") in art, f"Bilinmeyen çizim: {name}")

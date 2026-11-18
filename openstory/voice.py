@@ -1,4 +1,4 @@
-"""Fetch the two pinned default voice files on explicit request."""
+"""Install verified Turkish voice models on explicit request."""
 import hashlib
 import os
 import shutil

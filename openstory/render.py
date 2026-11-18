@@ -10,7 +10,7 @@ import numpy as np
 
 from .sound import FPS, mix, score, synthesize
 from .story import compose, read_story
-from .stage import film_shot, draw_actors
+from .stage import film_shot
 
 
 def ffmpeg(args, cwd, capture=False):

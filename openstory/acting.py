@@ -3,7 +3,7 @@ from math import exp, pi, sin
 
 INK = "#382e32"
 HAIR = {"bob", "wave", "silver", "crop", "braid"}
-GESTURES = {"rest", "reach", "offer", "heart", "listen", "point", "press", "wipe", "wave", "recoil"}
+GESTURES = {"rest", "reach", "offer", "heart", "listen", "point", "press", "wipe", "wave", "recoil", "clap"}
 PROPS = {"cassette", "mic", "wire"}
 
 
@@ -42,6 +42,9 @@ def face(p, mood, mouth, blink, glance):
     back = ""
     if style in {"bob", "wave", "braid"}:
         back = path("M-52-14 Q-61 8-58 39 Q-62 53-67 60 Q-48 72-29 58 L31 56 Q51 58 60 46 Q50 25 52 1 L39-32Z",hair)
+    if style == "braid":
+        back += "".join(oval(-48-i,25+11*i,10-i,10,hair,INK,1.4) for i in range(5))
+        back += path("M-59 70 L-47 69","none",p["trim"],4)
     outline = ("M-42-26 Q-25-54 12-47 Q47-44 49-8 Q50 17 41 34 Q27 53 7 55 Q-17 55-33 38 Q-47 24-48 7Z" if child else
                "M-41-29 Q-17-57 18-47 Q46-42 49-16 L50 9 Q55 26 45 37 Q32 54 13 61 Q-5 66-23 51 Q-40 43-43 17 L-48 2Z")
     head = [back, path(outline, skin), path("M-40 5 Q-54-7-57 5 Q-60 18-44 23 Q-39 25-37 20",skin),
@@ -98,7 +101,7 @@ def prop(name):
     return ""
 
 
-def arm(root, elbow, hand, skin, cloth, cuff, item="", gesture="rest"):
+def arm(root, elbow, hand, skin, cloth, cuff, item="", gesture="rest", item_art=""):
     sx, sy = root
     ex, ey = elbow
     hx, hy = hand
@@ -109,24 +112,24 @@ def arm(root, elbow, hand, skin, cloth, cuff, item="", gesture="rest"):
     skeleton = f"M{sx:.1f} {sy:.1f} Q{ex:.1f} {ey:.1f} {ex:.1f} {ey:.1f} L{hx:.1f} {hy:.1f}"
     palm = oval(0,0,9,10,skin,INK,1.8)
     fingers = path("M-4-2 Q0-8 5-7 Q9-5 6-2 L2 1",skin,INK,1.3)
-    if not item and gesture in ("point","press"):
+    if not (item or item_art) and gesture in ("point","press"):
         palm = path("M-8 5 Q-12-4-5-9 Q-2-12 4-9 L18-18 Q24-19 20-13 L9-2 Q15 5 8 10 Q1 14-8 5Z",skin)
         fingers = path("M1 1 L7-4 M4 4 L10 0","none","#a16f5a",1.2)
-    elif not item and gesture in ("offer","wave","reach"):
+    elif not (item or item_art) and gesture in ("offer","wave","reach","clap"):
         palm = path("M-10 3 Q-13-4-11-11 Q-9-15-7-10 L-4-5 L0-14 Q2-17 4-13 L3-8 L8-14 Q12-15 11-11 L8-5 L14-10 Q19-10 16-6 L9 3 Q2 13-6 11Z",skin)
         fingers = path("M-5 3 Q0-2 6-2","none","#ac7962",1.2)
     return (path(skeleton,"none",INK,24)+path(skeleton,"none",cloth,20)
             +path(f"M{hx+8*nx:.1f} {hy+8*ny:.1f} l{-16*nx:.1f} {-16*ny:.1f}","none",cuff,3)
             +group(f"translate({hx+4*dx/length:.1f} {hy+4*dy/length:.1f})",
-                   palm, group("translate(5 -7) rotate(-12)",prop(item)), fingers))
+                   palm, group("translate(5 -7) rotate(-12)",item_art or prop(item)), fingers))
 
 
 HANDS = {"rest":(56,203), "offer":(103,127), "reach":(102,101), "heart":(8,110),
          "listen":(35,37), "point":(107,86), "press":(93,151), "wipe":(22,27),
-         "wave":(64,34), "recoil":(38,108)}
+         "wave":(64,34), "recoil":(38,108), "clap":(18,119)}
 
 
-def actor_svg(p, actor, t, phase, emotion, speaking, mouth, progress):
+def actor_svg(p, actor, t, phase, emotion, speaking, mouth, progress, item_art=""):
     x, y, s = actor["x"], actor["y"], actor["scale"]
     flip = -1 if actor.get("face", "right") == "left" else 1
     pose = actor.get("gesture","rest")
@@ -164,8 +167,13 @@ def actor_svg(p, actor, t, phase, emotion, speaking, mouth, progress):
         hx += 11*sin(progress*5*pi)
     elbow = (max(51,hx*.68+17), 146+(hy-130)*.35)
     counter = move * (1 if pose in ("offer","recoil","wave") else .24)
-    left = arm((-35,98),(-52-8*counter,146),(-43+3*breath-16*counter,199-35*counter),skin,cloth,cuff)
-    right = arm((34,98),elbow,(hx,hy),skin,cloth,cuff,actor.get("prop",""),pose)
+    left_hand = (-43+3*breath-16*counter,199-35*counter)
+    if pose == "clap":
+        gap = 7 + 29 * (1+sin(4*pi*t))/2
+        hx, hy = gap, 122+breath
+        left_hand = (-gap,hy)
+    left = arm((-35,98),(-52-8*counter,146),left_hand,skin,cloth,cuff,gesture=pose if pose=="clap" else "rest")
+    right = arm((34,98),elbow,(hx,hy),skin,cloth,cuff,actor.get("prop",""),pose,item_art)
     head_scale = 1.16 if child else 1.
     head = group(f"translate({nod:.1f} {breath*1.6:.1f}) rotate({tilt*lead+nod:.2f} 0 56) scale({head_scale})",
                  face(p,emotion,mouth if speaking else 0,blink,glance))

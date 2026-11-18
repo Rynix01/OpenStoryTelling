@@ -38,7 +38,7 @@ def main():
             action.add_argument("--shot", type=int, default=1)
         if name == "render":
             action.add_argument("--model", type=Path)
-            action.add_argument("--pace", type=float, default=1.0, help="Piper süre çarpanı (0.7–1.5)")
+            action.add_argument("--pace", type=float, default=1.0, help="Konuşma süresi çarpanı (0.7–1.5)")
             action.add_argument("--music-seed", help="Melodi temasını bölümler arasında koru")
     args = cli.parse_args()
     if args.command == "voice":

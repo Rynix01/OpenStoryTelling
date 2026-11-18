@@ -1,0 +1,141 @@
+{
+  "version": 2,
+  "title": "Kayıp Anahtar",
+  "cast": {
+    "Duru": "Kız çocuk, yedi yaş",
+    "Murat": "Yetişkin erkek, Duru'nun babası"
+  },
+  "voices": {
+    "Duru": "elif",
+    "Murat": "ege"
+  },
+  "continuity": "Aynı gün, evin girişinde iki plan. Duru solda babasına dönük durur; anahtarı ona uzatır. Murat sağda Duru'ya dönüktür ve anahtarı görünce sevinir. İki oyuncu da her planda hareket eder.",
+  "puppets": {
+    "Duru": {
+      "child": true,
+      "hair": "braid",
+      "hair_color": "#49322b",
+      "skin": "#eabf9d",
+      "coat": "#e57f75",
+      "trim": "#f6dfad",
+      "pants": "#668b9a",
+      "gestures": [
+        "offer",
+        "wave"
+      ],
+      "role": "girl"
+    },
+    "Murat": {
+      "child": false,
+      "hair": "crop",
+      "hair_color": "#39312e",
+      "skin": "#dcae8c",
+      "coat": "#567d79",
+      "trim": "#e8d6b8",
+      "pants": "#4c5665",
+      "gestures": [
+        "listen",
+        "reach"
+      ],
+      "role": "man"
+    }
+  },
+  "art": {
+    "giris": "<rect x='0' y='0' width='720' height='1280' fill='#f2dfc0'/><rect x='0' y='0' width='720' height='900' fill='#e8d5b5'/><rect x='0' y='900' width='720' height='380' fill='#b88666'/><line x1='0' y1='900' x2='720' y2='900' stroke='#8e6853' stroke-width='8'/><rect x='430' y='125' width='220' height='690' rx='8' fill='#916b52'/><rect x='448' y='145' width='184' height='650' fill='#bc9270'/><circle cx='595' cy='480' r='10' fill='#e6ca79'/><rect x='54' y='150' width='245' height='300' fill='#8a6957'/><rect x='66' y='162' width='221' height='276' fill='#b7d5cc'/><line x1='176' y1='162' x2='176' y2='438' stroke='#f5ebd5' stroke-width='12'/><line x1='66' y1='300' x2='287' y2='300' stroke='#f5ebd5' stroke-width='12'/><ellipse cx='350' cy='1170' rx='280' ry='55' fill='#a8755d'/><rect x='72' y='705' width='125' height='135' rx='8' fill='#9a745c'/><rect x='60' y='685' width='150' height='28' rx='5' fill='#72513f'/><ellipse cx='135' cy='674' rx='35' ry='12' fill='#bc775b'/><path d='M135 670 C105 620 100 590 113 565 C137 590 140 623 135 670 M135 670 C151 615 169 595 183 590 C179 624 160 652 135 670' fill='#648c68'/>",
+    "anahtar": "<g transform='scale(.63)'><circle cx='0' cy='0' r='12' fill='none' stroke='#d5ac47' stroke-width='7'/><line x1='12' y1='0' x2='49' y2='0' stroke='#d5ac47' stroke-width='7'/><line x1='38' y1='0' x2='38' y2='10' stroke='#d5ac47' stroke-width='6'/><line x1='48' y1='0' x2='48' y2='8' stroke='#d5ac47' stroke-width='6'/></g>"
+  },
+  "boards": {
+    "bulus": {
+      "color": "#e8d5b5",
+      "layers": [
+        {
+          "art": "giris",
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "angle": 0
+        }
+      ],
+      "actors": [
+        {
+          "id": "Duru",
+          "x": 215,
+          "y": 640,
+          "scale": 1.4,
+          "face": "right",
+          "gesture": "offer",
+          "emotion": "neseli",
+          "propArt": "anahtar"
+        },
+        {
+          "id": "Murat",
+          "x": 505,
+          "y": 600,
+          "scale": 1.4,
+          "face": "left",
+          "gesture": "listen",
+          "emotion": "merak"
+        }
+      ]
+    },
+    "sevinc": {
+      "color": "#e8d5b5",
+      "layers": [
+        {
+          "art": "giris",
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "angle": 0
+        }
+      ],
+      "actors": [
+        {
+          "id": "Duru",
+          "x": 215,
+          "y": 640,
+          "scale": 1.4,
+          "face": "right",
+          "gesture": "wave",
+          "emotion": "neseli"
+        },
+        {
+          "id": "Murat",
+          "x": 505,
+          "y": 600,
+          "scale": 1.4,
+          "face": "left",
+          "gesture": "reach",
+          "emotion": "heyecan",
+          "propArt": "anahtar"
+        }
+      ]
+    }
+  },
+  "shots": [
+    {
+      "board": "bulus",
+      "camera": "hold",
+      "lines": [
+        {
+          "speaker": "Duru",
+          "text": "Baba, kayıp anahtarını buldum! Ayakkabılığın arkasındaymış.",
+          "emotion": "neseli",
+          "gesture": "offer"
+        }
+      ]
+    },
+    {
+      "board": "sevinc",
+      "camera": "push",
+      "lines": [
+        {
+          "speaker": "Murat",
+          "text": "Yaşasın! Her yerde onu arıyordum. Teşekkür ederim, Duru!",
+          "emotion": "heyecan",
+          "gesture": "reach"
+        }
+      ]
+    }
+  ]
+}

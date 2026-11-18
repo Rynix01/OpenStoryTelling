@@ -22,8 +22,9 @@ def draw_actors(data, board, background, foreground, timing, scene_time, progres
         if personal and "gesture" in line:
             pose = {**actor, "gesture":line["gesture"]}
         mood = line["emotion"] if personal else actor.get("emotion","notr")
+        item_art = data["art"].get(actor.get("propArt"), "")
         figures.append(actor_svg(data["puppets"][name], pose, scene_time, 1.27*(index+1),
-                                 mood, on_screen, level, progress))
+                                 mood, on_screen, level, progress, item_art))
     w, h = background.size
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 720 1280">{"".join(figures)}</svg>'
     layer = Image.open(io.BytesIO(resvg_py.svg_to_bytes(svg_string=svg))).convert("RGBA")

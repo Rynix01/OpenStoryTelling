@@ -18,7 +18,7 @@ Dekoru 720×1280 tam kadraj çiz. Hatira sahnesini geçmişte geçen hareketli b
 Albüm sayfası, çerçeve, paspartu, başlık şeridi veya slayt tasarlama.
 Aşağıdaki biçim örneğidir. Kendi olayını, oyuncularını, paletini, dekorunu ve planlarını oluştur.
 {"version":2,"title":"...","cast":{"Ela":"Kız çocuk, sekiz yaş"},"voices":{"Ela":"elif"},
-"continuity":"...","puppets":{"Ela":{"child":true,"hair":"braid","hair_color":"#503732","skin":"#e9b68d",
+"continuity":"...","puppets":{"Ela":{"role":"girl","child":true,"hair":"braid","hair_color":"#503732","skin":"#e9b68d",
 "coat":"#bd8051","trim":"#f2d599","pants":"#58636a"}},
 "art":{"pencere":"<rect x='70' y='120' width='325' height='405' fill='#aacbc5'/>"},
 "boards":{"oda":{"color":"#e2cbb0","layers":[{"art":"pencere"}],"actors":[{"id":"Ela","x":310,"y":430,
@@ -28,13 +28,15 @@ Sahne planlarında actors kullan. x ve y yüzün ortasıdır. 1 ölçek yetişki
 aşağı getirir. Genel planda ölçeği 1.3–1.6, yakın planda 2.4–3.0 civarında tut. Birbirine bakan
 oyuncuları karşılıklı konumlandır. Konuşanı ve dinleyenin tepkisini ayrı ayrı yönet.
 hair: bob, wave, crop, silver veya braid. face: left veya right. Oyuncu elde cassette, mic veya wire
-tutuyorsa prop alanı ekle. Başka eşyaları SVG ile çiz.
+tutuyorsa prop alanı ekle. Başka bir elde tutulan eşyayı art içinde tutma noktası (0,0) olacak
+şekilde yaklaşık 30 birim boyunda çiz ve oyuncuda propArt ile bu çizime bağla.
+Her oyuncuda role alanı woman, man, girl (kız çocuk) veya boy (erkek çocuk) olsun.
 Sesler: kadın nehir/selin/ayse, erkek ege/serdar, genç kız zeynep, genç erkek emre, kız çocuk elif,
 erkek çocuk can, yaşlı kadın fatma, yaşlı erkek hasan. Aynı karakter hep aynı sesi kullanır.
 Her replikte speaker, text (1–24 kelime) ve emotion gerekli. Duygular notr, merak, neseli, heyecan,
 uzgun, ozur, fisilti, uyari, kizgin. İsteğe bağlı intensity 0–1, pause 0–4 saniye, speed 0.7–1.35.
 Mode dialogue, iç ses için thought, kayıttan gelen ses için recording. Hareketler rest, reach, offer,
-heart, listen, point, press, wipe, wave, recoil. Kamera hold, push, pull. Dinleyenin duygusunu ve
+heart, listen, point, press, wipe, wave, recoil, clap. Kamera hold, push, pull. Dinleyenin duygusunu ve
 hareketini sahnede tanımla. Vektör dekorunda g/path/rect/circle/ellipse/line/polyline/polygon ve
 temel SVG çizim nitelikleri kullan; dış dosya, metin, defs, href, style ve url kullanma. Katman
 yerleşimi art, x, y, scale ve angle alır. Önde kalacak masa gibi katmana when: front ekle."""

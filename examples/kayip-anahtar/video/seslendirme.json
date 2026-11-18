@@ -1,0 +1,23 @@
+{
+  "engine": "Seslen TTS",
+  "lines": [
+    {
+      "start": 0.0,
+      "end": 5.225,
+      "voice": "elif",
+      "speaker": "Duru",
+      "text": "Baba, kayıp anahtarını buldum! Ayakkabılığın arkasındaymış.",
+      "emotion": "neseli",
+      "gesture": "offer"
+    },
+    {
+      "start": 5.567,
+      "end": 10.317,
+      "voice": "ege",
+      "speaker": "Murat",
+      "text": "Yaşasın! Her yerde onu arıyordum. Teşekkür ederim, Duru!",
+      "emotion": "heyecan",
+      "gesture": "reach"
+    }
+  ]
+}

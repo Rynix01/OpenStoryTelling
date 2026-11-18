@@ -21,7 +21,8 @@
       "skin": "#e8bb95",
       "coat": "#d69b46",
       "trim": "#e8c285",
-      "pants": "#405659"
+      "pants": "#405659",
+      "role": "woman"
     },
     "Selim": {
       "hair": "silver",
@@ -29,7 +30,8 @@
       "skin": "#d5a37f",
       "coat": "#a35545",
       "trim": "#ce8a66",
-      "pants": "#404850"
+      "pants": "#404850",
+      "role": "man"
     },
     "KucukSelim": {
       "hair": "crop",
@@ -38,7 +40,8 @@
       "coat": "#698c8b",
       "trim": "#c8c8a7",
       "pants": "#535b62",
-      "child": true
+      "child": true,
+      "role": "boy"
     },
     "Nermin": {
       "hair": "wave",
@@ -46,7 +49,8 @@
       "skin": "#e4b28c",
       "coat": "#bb8243",
       "trim": "#f0ce94",
-      "pants": "#596b62"
+      "pants": "#596b62",
+      "role": "woman"
     }
   },
   "art": {
@@ -384,6 +388,31 @@
           "when": "front"
         }
       ]
+    },
+    "dugme": {
+      "file": "art/bugun.webp",
+      "layers": [
+        {
+          "art": "bench"
+        },
+        {
+          "art": "player",
+          "x": 360,
+          "y": 1016,
+          "scale": 1.15
+        }
+      ],
+      "actors": [
+        {
+          "id": "Selim",
+          "x": 591,
+          "y": 624,
+          "scale": 2.46,
+          "face": "left",
+          "gesture": "press",
+          "emotion": "fisilti"
+        }
+      ]
     }
   },
   "shots": [
@@ -463,7 +492,7 @@
       ]
     },
     {
-      "board": "birlikte",
+      "board": "dugme",
       "camera": "hold",
       "lines": [
         {
@@ -571,7 +600,7 @@
           "speaker": "Nermin",
           "text": "Duydum seni Selim! Bak, mutfaktan alkış da geliyor!",
           "emotion": "heyecan",
-          "gesture": "wave"
+          "gesture": "clap"
         }
       ]
     },
