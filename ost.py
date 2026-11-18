@@ -1,5 +1,6 @@
 """OpenStoryTelling command line."""
 import argparse
+import os
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -16,13 +17,16 @@ def main():
     sub = cli.add_subparsers(dest="command", required=True)
     voice = sub.add_parser("voice", help="Türkçe Piper modelini indir veya doğrula")
     voice.add_argument("--dir", type=Path, default=Path("models"))
-    for name in ("brief", "generate"):
-        author = sub.add_parser(name, help="Codex için bölüm isteği hazırla" if name == "brief" else "Codex CLI ile bölüm yaz ve çiz")
+    for name in ("brief", "generate", "make"):
+        author = sub.add_parser(name, help={"brief":"Sohbet için bölüm isteği hazırla", "generate":"Codex CLI ile bölüm yaz ve çiz", "make":"Fikirden proje ve MP4 üret"}[name])
         author.add_argument("idea")
         author.add_argument("--previous", type=Path)
-        if name == "generate":
+        if name in ("generate", "make"):
             author.add_argument("-o", "--output", type=Path, required=True)
-            author.add_argument("--codex-model", help="Codex CLI oturumunda kullanılabilen model")
+            author.add_argument("--codex-model", default=os.environ.get("OPENSTORY_CODEX_MODEL"), help="Codex CLI oturumunda kullanılabilen model")
+        if name == "make":
+            author.add_argument("--model", type=Path, default=Path("models") / MODEL)
+            author.add_argument("--music-seed")
     for name in ("check", "preview", "render"):
         action = sub.add_parser(name, help={"check":"Bölüm dosyasını doğrula", "preview":"Bir planı PNG olarak çiz", "render":"Seslendir ve MP4 üret"}[name])
         action.add_argument("story", type=Path)
@@ -37,10 +41,19 @@ def main():
     args = cli.parse_args()
     if args.command == "voice":
         install(args.dir)
-    elif args.command in ("brief", "generate"):
+    elif args.command in ("brief", "generate", "make"):
         previous = read_story(args.previous) if args.previous else None
         prompt = brief(args.idea, previous)
-        if args.command == "generate":
+        if args.command == "make":
+            if args.output.exists():
+                raise ValueError(f"Yeni bölüm için boş bir hedef adı seç: {args.output}")
+            if not args.model.is_file() or not args.model.with_suffix(".onnx.json").is_file():
+                raise ValueError("Önce voice komutuyla modeli kur veya --model ile yerel ses seç.")
+            source = args.output / "bolum.json"
+            generate(prompt, source, args.codex_model)
+            print(f"Bölüm kaydedildi: {source}", flush=True)
+            render(source, args.output / "video", args.model, 1.0, args.music_seed)
+        elif args.command == "generate":
             generate(prompt, args.output, args.codex_model)
             print(args.output)
         else:

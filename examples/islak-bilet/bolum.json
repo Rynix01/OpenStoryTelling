@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "title": "Islak Bilet",
+  "cast": {
+    "saatci": "Gümüş saçlı, bıyıklı yaşlı saatçi; lacivert paltolu, vapur yolcusu."
+  },
+  "continuity": "Biletin neden ıslak olduğu ve saatçinin neyi hatırladığı belirsizdir.",
+  "art": {
+    "vapur": "<g><rect x='0' y='0' width='720' height='1280' fill='#d9c6a3'/><rect x='0' y='0' width='720' height='570' fill='#53777b'/><rect x='35' y='55' width='650' height='455' rx='24' fill='#263e43' stroke='#e0b66a' stroke-width='18'/><rect x='55' y='75' width='610' height='415' rx='12' fill='#9cc5c2'/><path d='M55 330 Q180 305 300 330 T665 320 V490 H55 Z' fill='#477d86'/><path d='M55 375 Q160 352 265 375 T470 370 T665 365 M70 425 Q170 405 270 425 T470 420 T650 415' fill='none' stroke='#b5d3ca' stroke-width='7' stroke-linecap='round'/><path d='M360 75 V490' stroke='#e0b66a' stroke-width='15'/><rect x='0' y='570' width='720' height='48' fill='#8c583d'/><rect x='0' y='618' width='720' height='662' fill='#b78b63'/><path d='M0 780 H720 M0 1020 H720' stroke='#9b704f' stroke-width='7'/><rect x='0' y='1030' width='720' height='85' fill='#754833'/><path d='M0 1115 H720' stroke='#4d352d' stroke-width='12'/></g>",
+    "saatci": "<g stroke='#26343b' stroke-width='8' stroke-linejoin='round' stroke-linecap='round'><path d='M142 580 H380 L405 1060 H278 L255 794 L239 1060 H109 Z' fill='#273e49'/><path d='M232 288 Q259 306 285 288 L301 370 L260 397 L220 364 Z' fill='#c49174'/><path d='M75 660 Q65 472 128 405 Q158 374 190 365 L330 365 Q378 380 405 428 Q449 505 445 660 Z' fill='#314b5c'/><path d='M190 365 L260 455 L330 365 L356 420 L306 498 L260 455 L214 498 L165 420 Z' fill='#466779'/><path d='M236 383 L260 455 L284 383' fill='#e1d4bb'/><path d='M260 455 V660' fill='none' stroke='#172c38'/><circle cx='278' cy='525' r='7' fill='#c8a976' stroke='none'/><circle cx='278' cy='583' r='7' fill='#c8a976' stroke='none'/><path d='M103 484 Q76 527 85 589 L151 606 L176 548' fill='#314b5c'/><path d='M154 557 L195 557 L195 619 L137 619 Z' fill='#243e4d'/><path d='M365 466 Q395 488 410 553' fill='none' stroke='#233d4b' stroke-width='33'/><path d='M181 189 Q170 116 211 87 Q260 49 310 86 Q349 113 338 190 L326 248 Q315 310 260 327 Q205 310 194 248 Z' fill='#d9a882'/><path d='M181 189 Q166 122 201 91 Q240 51 290 72 Q344 76 340 187 L321 160 Q316 126 307 119 Q276 137 235 113 Q220 145 198 152 L198 190 Z' fill='#d6d9d3'/><path d='M197 164 Q175 153 178 198 Q181 225 198 225 M325 164 Q347 153 342 198 Q339 225 325 225' fill='#d9a882'/><path d='M210 178 Q225 169 241 178 M280 178 Q296 169 311 178' fill='none'/><ellipse cx='226' cy='193' rx='5' ry='8' fill='#26343b' stroke='none'/><ellipse cx='296' cy='193' rx='5' ry='8' fill='#26343b' stroke='none'/><path d='M259 192 L252 225 L265 226' fill='none' stroke='#a36f5b' stroke-width='5'/><path d='M215 245 Q236 226 260 242 Q284 226 305 245 Q287 257 260 249 Q233 257 215 245 Z' fill='#d6d9d3' stroke='#7e817d' stroke-width='4'/><path d='M241 275 Q260 282 279 275' fill='none' stroke='#805b4d' stroke-width='5'/><path d='M205 212 L218 216 M302 212 L315 208 M218 288 Q260 312 303 288' fill='none' stroke='#b37f68' stroke-width='4'/></g>",
+    "kol_el": "<g stroke='#26343b' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'><path d='M0 153 Q40 118 104 102 L149 150 Q106 190 37 210 Z' fill='#314b5c'/><path d='M111 111 Q130 84 151 80 L172 88 Q188 87 198 100 L219 113 Q226 119 219 128 Q214 134 204 130 L187 123 L204 141 Q211 149 204 155 Q198 161 190 155 L174 143 L186 160 Q191 168 184 173 Q176 178 169 169 L154 154 L158 170 Q159 180 150 181 Q142 182 138 172 L125 148 Z' fill='#d9a882'/></g>",
+    "bilet": "<g><path d='M8 12 L172 4 L181 105 L17 113 Z' fill='#e7cf96' stroke='#594b3c' stroke-width='6' stroke-linejoin='round'/><path d='M35 37 L145 31 M37 52 L117 48 M39 80 L96 77' stroke='#927b58' stroke-width='5' stroke-linecap='round'/><path d='M141 8 L149 107' stroke='#9f8760' stroke-width='4' stroke-dasharray='5 7'/><path d='M26 15 Q42 26 38 42 Q32 54 48 65 Q55 75 46 109 L18 111 Z' fill='#82b5bc' opacity='0.55'/><path d='M159 118 Q148 134 159 141 Q171 134 159 118 Z' fill='#78aeb9'/></g>",
+    "konus": "<path d='M240 274 Q260 278 280 274 Q275 295 259 294 Q246 293 240 274Z' fill='#5f3734' stroke='#805b4d' stroke-width='3'/>",
+    "kirpik": "<g fill='#d9a882'><ellipse cx='226' cy='193' rx='11' ry='12'/><ellipse cx='296' cy='193' rx='11' ry='12'/></g><path d='M216 193 Q226 201 236 192 M286 193 Q296 201 306 192' fill='none' stroke='#4d423b' stroke-width='4' stroke-linecap='round'/>"
+  },
+  "boards": {
+    "cep": {
+      "color": "#d9c6a3",
+      "layers": [
+        {
+          "art": "vapur",
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "angle": 0
+        },
+        {
+          "art": "saatci",
+          "x": 100,
+          "y": 345,
+          "scale": 1.22,
+          "angle": 0
+        },
+        {
+          "art": "bilet",
+          "x": 428,
+          "y": 890,
+          "scale": 0.65,
+          "angle": -17
+        },
+        {
+          "art": "kol_el",
+          "x": 278,
+          "y": 850,
+          "scale": 1.05,
+          "angle": -13
+        },
+        {
+          "scale": 1.22,
+          "when": "speaking",
+          "x": 100,
+          "art": "konus",
+          "y": 345
+        },
+        {
+          "scale": 1.22,
+          "when": "blink",
+          "x": 100,
+          "art": "kirpik",
+          "y": 345
+        }
+      ]
+    },
+    "bilet_yakin": {
+      "color": "#d9c6a3",
+      "layers": [
+        {
+          "art": "vapur",
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "angle": 0
+        },
+        {
+          "art": "saatci",
+          "x": -100,
+          "y": 145,
+          "scale": 1.55,
+          "angle": 0
+        },
+        {
+          "art": "bilet",
+          "x": 423,
+          "y": 780,
+          "scale": 1.15,
+          "angle": -14
+        },
+        {
+          "art": "kol_el",
+          "x": 175,
+          "y": 785,
+          "scale": 1.8,
+          "angle": -18
+        },
+        {
+          "scale": 1.55,
+          "when": "speaking",
+          "x": -100,
+          "art": "konus",
+          "y": 145
+        },
+        {
+          "scale": 1.55,
+          "when": "blink",
+          "x": -100,
+          "art": "kirpik",
+          "y": 145
+        }
+      ]
+    }
+  },
+  "shots": [
+    {
+      "board": "cep",
+      "camera": "push",
+      "lines": [
+        "Cebimdeki bilet neden sırılsıklamdı?"
+      ]
+    },
+    {
+      "board": "bilet_yakin",
+      "camera": "hold",
+      "lines": [
+        "Mürekkebi akmıştı. Tarihi yine de ezbere biliyordum."
+      ]
+    }
+  ]
+}
